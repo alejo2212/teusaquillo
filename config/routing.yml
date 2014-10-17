@@ -1,0 +1,23 @@
+homepage:
+  url:    /
+  param:  { module: default, action: index, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+default_index:
+  url:    /holamundo.html
+  param:  { module: default, action: index, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+default_ejemplo:
+  url:    /default/ejemplo
+  param:  { module: default, action: ejemplo, format: html }
+  #load:
+  #  - mvcBasicPackageDataBase
+  
+eventos_publicar:
+  url:    /publicar_eventos.html
+  param:  { module: eventos, action: publicar, format: html }

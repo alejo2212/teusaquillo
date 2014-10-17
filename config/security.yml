@@ -1,0 +1,7 @@
+default:
+  index:
+    security: true
+    credentials:
+      - trabajador
+      - rojo
+      - [uno, dos]

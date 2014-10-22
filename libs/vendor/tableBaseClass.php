@@ -99,7 +99,7 @@ namespace mvc\model\table {
         $line1 = '(';
         $line2 = 'VALUES (';
         foreach ($data as $field => $value) {
-          $line1 = $line1 . '"' . $field . '",';
+          $line1 = $line1 . '"' . $field . '", ';
           $line2 = $line2 . ((is_numeric($value) === true) ? $value : "'" . $value . "'") . ', ';
         }
 

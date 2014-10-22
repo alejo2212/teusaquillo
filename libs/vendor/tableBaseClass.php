@@ -13,7 +13,7 @@ namespace mvc\model\table {
    */
   class tableBaseClass implements tableInterface {
 
-    protected $fieldDeleteAt = 'delete_at';
+    protected static $fieldDeleteAt = 'deleted_at';
 
     /**
      * Método para borrar un registro de una tabla X en la base de datos
@@ -155,7 +155,7 @@ namespace mvc\model\table {
         $sql = $sql . ' FROM ' . $table;
 
         if ($deletedLogical === true) {
-          $sql = $sql . ' WHERE ' . $table . $this->fieldDeleteAt . ' IS NULL';
+          $sql = $sql . ' WHERE ' . $table . '.' . self::$fieldDeleteAt . ' IS NULL';
         }
 
         if ($orderBy !== null) {
@@ -201,7 +201,7 @@ namespace mvc\model\table {
         $sql = "UPDATE " . $table . " SET ";
 
         foreach ($data as $key => $value) {
-          $sql = $sql . " " . $table . $key . " = '" . $value . "', ";
+          $sql = $sql . " " . $table . '.' . $key . " = '" . $value . "', ";
         }
 
         $newLeng = strlen($sql) - 2;

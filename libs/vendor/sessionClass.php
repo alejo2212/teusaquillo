@@ -91,6 +91,10 @@ namespace mvc\session {
       $this->setFlash('mvcModule', $module);
     }
     
+    /**
+     * Devuelve el formato a usar definido en el routing (html, json, xml, pdf, js)
+     * @return string
+     */
     public function getFormatOutput() {
       return $this->getFlash('mvcFormatOutput');
     }

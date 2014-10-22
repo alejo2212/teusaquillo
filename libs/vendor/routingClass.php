@@ -88,15 +88,15 @@ namespace mvc\routing {
       exit();
     }
 
-    public function getUlrCss($css) {
+    public function getUrlCss($css) {
       return configClass::getUrlBase() . 'css/' . $css;
     }
 
-    public function getUlrImg($image) {
+    public function getUrlImg($image) {
       return configClass::getUrlBase() . 'img/' . $image;
     }
 
-    public function getUlrJs($javascript) {
+    public function getUrlJs($javascript) {
       return configClass::getUrlBase() . 'js/' . $javascript;
     }
 
@@ -111,7 +111,7 @@ namespace mvc\routing {
      * @param string|array $action [optional]
      * @param array $variables [optional]
      */
-    public function getUlrWeb($module, $action = null, $variables = null) {
+    public function getUrlWeb($module, $action = null, $variables = null) {
       if (preg_match('/^@/', $module) === 1) {
         $routing = $this->validateRouting($module);
         $module = $routing['param']['module'];
@@ -120,7 +120,7 @@ namespace mvc\routing {
       } else {
         $routing = $this->validateRouting($module, $action);
       }
-      return configClass::getUrlBase() . configClass::getIndexFile() . '/' . $module . '/' . $action . $this->genVariables($variables);
+      return configClass::getUrlBase() . configClass::getIndexFile() . $routing['url'] . $this->genVariables($variables);
     }
 
     /**
@@ -136,9 +136,9 @@ namespace mvc\routing {
      */
     public function redirect($module, $action = null, $variables = null) {
       if (preg_match('/^@/', $module) === 1 and $action === null) {
-        header('Location: ' . $this->getUlrWeb($module, $action));
+        header('Location: ' . $this->getUrlWeb($module, $action));
       } else {
-        header('Location: ' . $this->getUlrWeb($module, $action, $variables));
+        header('Location: ' . $this->getUrlWeb($module, $action, $variables));
       }
     }
 
@@ -196,7 +196,7 @@ namespace mvc\routing {
         foreach ($variables as $key => $value) {
           $answer .= $key . '=' . $value . '&';
         }
-        $answer = substr($answer, (strlen($answer) - 1), 1);
+        $answer = substr($answer, 0, (strlen($answer) - 1));
       }
       return $answer;
     }

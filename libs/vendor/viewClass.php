@@ -11,6 +11,10 @@ namespace mvc\view {
    * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    */
   class viewClass {
+    
+    static public function includePartial($partial) {
+      include_once configClass::getPathAbsolute() . 'view/' . $partial . '.php';
+    }
 
     static public function genMetas() {
       $module = sessionClass::getInstance()->getModule();

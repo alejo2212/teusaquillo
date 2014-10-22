@@ -56,15 +56,18 @@ namespace mvc\request {
     }
 
     public function getPost($param) {
-      return $this->protectParam($this->post[$param]);
+      //return $this->protectParam($this->post[$param]);
+      return $this->post[$param];
     }
 
     public function getGet($param) {
-      return $this->protectParam($this->get[$param]);
+      //return $this->protectParam($this->get[$param]);
+      return $this->get[$param];
     }
 
     public function getRequest($param) {
-      return $this->protectParam($this->request[$param]);
+      //return $this->protectParam($this->request[$param]);
+      return $this->request[$param];
     }
 
     public function getCookie($param) {

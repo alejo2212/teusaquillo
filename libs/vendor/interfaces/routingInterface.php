@@ -4,13 +4,13 @@ namespace mvc\interfaces {
 
   interface routingInterface {
 
-    public function getUlrWeb($module, $action = null, $variables = null);
+    public function getUrlWeb($module, $action = null, $variables = null);
 
-    public function getUlrImg($image);
+    public function getUrlImg($image);
 
-    public function getUlrCss($css);
+    public function getUrlCss($css);
 
-    public function getUlrJs($javascript);
+    public function getUrlJs($javascript);
 
     public function redirect($module, $action = null, $variables = null);
 

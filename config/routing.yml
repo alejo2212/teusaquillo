@@ -21,3 +21,48 @@ default_ejemplo:
 eventos_publicar:
   url:    /publicar_eventos.html
   param:  { module: eventos, action: publicar, format: html }
+  
+insumo_index:
+  url:    /insumo/index
+  param:  { module: insumo, action: index, format: html }
+  
+tipoInsumo_index:
+  url:    /tipoInsumo/index
+  param:  { module: tipoInsumo, action: index, format: html }
+
+security_index:
+  url:    /seguridad/index
+  param:  { module: security, action: index, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+security_user_view:
+  url:    /usuario/ver
+  param:  { module: security, action: view, format: html }
+    
+security_user_new:
+  url:    /usuario/nuevo
+  param:  { module: security, action: new, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+  
+security_user_create:
+  url:    /usuario/crear
+  param:  { module: security, action: create, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+security_user_delete:
+  url:    /usuario/borrar
+  param:  { module: security, action: delete, format: html }
+
+security_user_edit:
+  url:    /usuario/editar
+  param:  { module: security, action: edit, format: html }
+
+security_user_update:
+  url:    /usuario/actualizar
+  param:  { module: security, action: update, format: html }

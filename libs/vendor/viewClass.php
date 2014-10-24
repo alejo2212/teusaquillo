@@ -12,6 +12,10 @@ namespace mvc\view {
    */
   class viewClass {
     
+    static public function includeHandlerMessage() {
+      include_once configClass::getPathAbsolute() . 'libs/view/handlerMessage.php';
+    }
+    
     static public function includePartial($partial) {
       include_once configClass::getPathAbsolute() . 'view/' . $partial . '.php';
     }

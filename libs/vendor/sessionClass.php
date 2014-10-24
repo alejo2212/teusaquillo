@@ -211,6 +211,38 @@ namespace mvc\session {
       $this->setAttribute('mvcUserName', $name_user);
     }
 
+    public function hasError() {
+      return (isset($_SESSION['mvcError']) and count($_SESSION['mvcError']) > 0) ? true : false;
+    }
+
+    public function hasInformation() {
+      return (isset($_SESSION['mvcInformation']) and count($_SESSION['mvcInformation']) > 0) ? true : false;
+    }
+
+    public function hasSuccess() {
+      return (isset($_SESSION['mvcSuccess']) and count($_SESSION['mvcSuccess']) > 0) ? true : false;
+    }
+
+    public function hasWarning() {
+      return (isset($_SESSION['mvcWarning']) and count($_SESSION['mvcWarning']) > 0) ? true : false;
+    }
+
+    public function deleteErrorStack() {
+      unset($_SESSION['mvcError']);
+    }
+
+    public function deleteInformationStack() {
+      unset($_SESSION['mvcInformation']);
+    }
+
+    public function deleteSuccessStack() {
+      unset($_SESSION['mvcSuccess']);
+    }
+
+    public function deleteWarningStack() {
+      unset($_SESSION['mvcWarning']);
+    }
+
   }
 
 }

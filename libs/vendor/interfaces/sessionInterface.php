@@ -51,36 +51,51 @@ namespace mvc\interfaces {
 
     public function setLoadFiles($load_files);
 
+    public function hasError();
+
     public function setError($error);
 
     public function getError();
+
+    public function deleteErrorStack();
+
+    public function hasSuccess();
 
     public function setSuccess($success);
 
     public function getSuccess();
 
+    public function deleteSuccessStack();
+
+    public function hasInformation();
+
     public function setInformation($information);
 
     public function getInformation();
 
+    public function deleteInformationStack();
+
+    public function hasWarning();
+
     public function setWarning($warning);
 
     public function getWarning();
-    
-    public function setFirstCall($first_call);
-    
-    public function getFirstCall();
-    
-    public function hasFirstCall();
-    
-    public function setUserId($id);
-    
-    public function setUserName($name_user);
-    
-    public function getUserId();
-    
-    public function getUserName();
 
+    public function deleteWarningStack();
+
+    public function setFirstCall($first_call);
+
+    public function getFirstCall();
+
+    public function hasFirstCall();
+
+    public function setUserId($id);
+
+    public function setUserName($name_user);
+
+    public function getUserId();
+
+    public function getUserName();
   }
 
 }

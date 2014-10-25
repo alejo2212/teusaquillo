@@ -25,4 +25,5 @@ class controlAlimentoTableClass extends controlAlimentoBaseTableClass {
       throw $exc;
     }
   }
+
 }

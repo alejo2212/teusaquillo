@@ -8,7 +8,7 @@ use mvc\model\table\tableBaseClass;
  * @author jhon fernando hoyos <jhonfernandohoyosdiaz@gmail.com>
  */
 class tipoAmbienteBaseTableClass extends tableBaseClass {
-  
+
   const ID = 'id';
   const NOMBRE = '  nombre';
   const NOMBRE_LENGTH = 80;
@@ -17,7 +17,7 @@ class tipoAmbienteBaseTableClass extends tableBaseClass {
   const OBSERVACION = 'observacion';
   const OBSERVACION_LENGTH = 1024;
   const DELETED_AT = 'deleted_at';
-  
+
   /**
    * Obtiene el nombre de la tabla
    * @return string
@@ -35,7 +35,7 @@ class tipoAmbienteBaseTableClass extends tableBaseClass {
    * versión DB
    * @return string
    */
-  public static function getNameField($field, $html = false, $table = NULL) {
+  public static function getNameField($field, $html = false, $table = null) {
     return parent::getNameField($field, self::getNameTable(), $html);
   }
 
@@ -49,7 +49,7 @@ class tipoAmbienteBaseTableClass extends tableBaseClass {
    * borrado físico [por defecto] de un registro en una tabla de la base de datos
    * @return \PDOException|boolean
    */
-  public static function delete($ids, $deletedLogical = false, $table = NULL) {
+  public static function delete($ids, $deletedLogical = false, $table = null) {
     return parent::delete(self::getNameTable(), $ids, $deletedLogical);
   }
 
@@ -61,7 +61,7 @@ class tipoAmbienteBaseTableClass extends tableBaseClass {
    * $data['nombre'] = 'Erika'; $data['apellido'] = 'Galindo';
    * @return \PDOException|boolean
    */
-  public static function insert($data, $table = NULL) {
+  public static function insert($data, $table = null) {
     return parent::insert(self::getNameTable(), $data);
   }
 
@@ -82,7 +82,7 @@ class tipoAmbienteBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = NULL) {
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
     return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
   }
 
@@ -96,7 +96,8 @@ class tipoAmbienteBaseTableClass extends tableBaseClass {
    * datos a escribir
    * @return \PDOException|boolean
    */
-  public static function update($ids, $data, $table = NULL) {
+  public static function update($ids, $data, $table = null) {
     return parent::update($ids, $data, self::getNameTable());
   }
+
 }

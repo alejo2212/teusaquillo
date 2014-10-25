@@ -8,9 +8,9 @@ use mvc\model\table\tableBaseClass;
  * @author liliana carolina moreno <lilianacarol6@hotmail.com>
  */
 class maquinaBaseTableClass extends tableBaseClass {
-  
+
   const ID = 'id';
-  const FECHA_IONGRESO= 'fecha_ingreso';
+  const FECHA_IONGRESO = 'fecha_ingreso';
   const DIRECCION = 'direccion';
   const DIRECCION_LENGTE = 1024;
   const CODIGO = 'codigo';
@@ -20,9 +20,9 @@ class maquinaBaseTableClass extends tableBaseClass {
   const FECHA_MANTENIMIENTO = 'fecha_mantenimiento';
   const INTERVALO_MANTENIMIENTO = 'intervalo_mantenimiento';
   const ACTIVADO = 'activado';
-  const VALOR = 'valor' ;
+  const VALOR = 'valor';
   const DELATED_AT = 'delete_at';
-  
+
   /**
    * Obtiene el nombre de la tabla
    * @return string
@@ -40,7 +40,7 @@ class maquinaBaseTableClass extends tableBaseClass {
    * versión DB
    * @return string
    */
-  public static function getNameField($field, $html = false, $table = NULL) {
+  public static function getNameField($field, $html = false, $table = null) {
     return parent::getNameField($field, self::getNameTable(), $html);
   }
 
@@ -54,7 +54,7 @@ class maquinaBaseTableClass extends tableBaseClass {
    * borrado físico [por defecto] de un registro en una tabla de la base de datos
    * @return \PDOException|boolean
    */
-  public static function delete($ids, $deletedLogical = false, $table = NULL) {
+  public static function delete($ids, $deletedLogical = false, $table = null) {
     return parent::delete(self::getNameTable(), $ids, $deletedLogical);
   }
 
@@ -66,7 +66,7 @@ class maquinaBaseTableClass extends tableBaseClass {
    * $data['nombre'] = 'Erika'; $data['apellido'] = 'Galindo';
    * @return \PDOException|boolean
    */
-  public static function insert($data, $table = NULL) {
+  public static function insert($data, $table = null) {
     return parent::insert(self::getNameTable(), $data);
   }
 
@@ -87,7 +87,7 @@ class maquinaBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = NULL) {
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
     return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
   }
 
@@ -101,7 +101,8 @@ class maquinaBaseTableClass extends tableBaseClass {
    * datos a escribir
    * @return \PDOException|boolean
    */
-  public static function update($ids, $data, $table = NULL) {
+  public static function update($ids, $data, $table = null) {
     return parent::update($ids, $data, self::getNameTable());
   }
+
 }

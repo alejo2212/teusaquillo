@@ -25,4 +25,5 @@ class requisicionTableClass extends requisicionBaseTableClass {
       throw $exc;
     }
   }
+
 }

@@ -24,24 +24,20 @@ class sesionTableClass extends sesionBaseTableClass {
       $answer = modelClass::getInstance()->prepare($sql);
       $answer->execute($params);
       $answer = $answer->fetchAll(PDO::FETCH_OBJ);
-      
-      // $id = usuarioTableClass::ID;
-      // $answer[0]->$id;
-      
       return (count($answer) === 0) ? false : $answer;
     } catch (PDOException $exc) {
       throw $exc;
     }
   }
-  
+
   public static function clearSessions($date_limit) {
     try {
-     $sql = 'DELETE FROM ' . sesionTableClass::getNameTable() . ' WHERE ' . sesionTableClass::getNameField(sesionTableClass::CREATED_AT) . ' >= :date_limit'; 
-     $params = array(':date_limit' => $date_limit);
-     modelClass::getInstance()->beginTransaction();
-     modelClass::getInstance()->prepare($sql)->execute($params);
-     modelClass::getInstance()->commit();
-     return true;
+      $sql = 'DELETE FROM ' . sesionTableClass::getNameTable() . ' WHERE ' . sesionTableClass::getNameField(sesionTableClass::CREATED_AT) . ' >= :date_limit';
+      $params = array(':date_limit' => $date_limit);
+      modelClass::getInstance()->beginTransaction();
+      modelClass::getInstance()->prepare($sql)->execute($params);
+      modelClass::getInstance()->commit();
+      return true;
     } catch (PDOException $exc) {
       modelClass::getInstance()->rollBack();
       throw $exc;

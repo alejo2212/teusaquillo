@@ -8,5 +8,5 @@ use mvc\model\modelClass;
  * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
 class bitacoraTableClass extends bitacoraBaseTableClass {
-  
+
 }

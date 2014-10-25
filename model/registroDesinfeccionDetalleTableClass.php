@@ -1,12 +1,12 @@
 <?php
 
-use mvc\model\table\tableBaseClass;
+use mvc\model\modelClass;
 
 /**
  * Description of registroDesinfeccionDetalleTableClass
  *
  * @author Jhonny Alejandro <jhonny2212@hotmail.com>
  */
-class registroDesinfeccionDetalleTableClass extends registroDesinfeccionDetalleBaseTableClass{
-    //put your code here
+class registroDesinfeccionDetalleTableClass extends registroDesinfeccionDetalleBaseTableClass {
+
 }

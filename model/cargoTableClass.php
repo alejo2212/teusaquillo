@@ -1,4 +1,5 @@
 <?php
+
 use mvc\model\modelClass;
 
 /**
@@ -6,8 +7,8 @@ use mvc\model\modelClass;
  *
  * @author Jhonny Alejandro <jhonny2212@hotmail.com>
  */
-class cargoTableClass extends cargoBaseTableClass{
-  
+class cargoTableClass extends cargoBaseTableClass {
+
   public static function getCargo($id) {
     try {
       $sql = 'SELECT ' . cargoTableClass::getNameField(cargoTableClass::ID) . ', ' . cargoTableClass::getNameField(cargoTableClass::NOMBRE) . ', ' . cargoTableClass::getNameField(cargoTableClass::DESCRIPCION) . ' '
@@ -25,4 +26,5 @@ class cargoTableClass extends cargoBaseTableClass{
       throw $exc;
     }
   }
+
 }

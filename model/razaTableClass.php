@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use mvc\model\modelClass;
 
@@ -9,6 +9,4 @@ use mvc\model\modelClass;
  */
 class razaTableClass extends razaBaseTableClass {
 
-
 }
-

@@ -7,6 +7,6 @@ use mvc\model\modelClass;
  *
  * @author Jhonny Alejandro <jhonny2212@hotmail.com>
  */
-class ambienteInsumoTableClass extends ambienteInsumoBaseTableClass{
-    
+class ambienteInsumoTableClass extends ambienteInsumoBaseTableClass {
+
 }

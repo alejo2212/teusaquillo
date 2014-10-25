@@ -8,14 +8,14 @@ use mvc\model\table\tableBaseClass;
  * @author jhon fernando hoyos <jhonfernandohoyosdiaz@gmail.com>
  */
 class alistamientoReparacionBaseTableClass extends tableBaseClass {
-  
+
   const ID = 'id';
-  const REGISTRO_ALISTAMIENTO_ID= 'registro_alistamiento_id';
+  const REGISTRO_ALISTAMIENTO_ID = 'registro_alistamiento_id';
   const TIPO_REPARACION_ID = 'tipo_reparacion_id';
-  const FECHA_INICIO= 'fecha-inicio';
+  const FECHA_INICIO = 'fecha-inicio';
   const FECHA_FIN = 'fecha_fin';
   const DELETED_AT = 'deleted_at';
-  
+
   /**
    * Obtiene el nombre de la tabla
    * @return string
@@ -33,7 +33,7 @@ class alistamientoReparacionBaseTableClass extends tableBaseClass {
    * versión DB
    * @return string
    */
-  public static function getNameField($field, $html = false, $table = NULL) {
+  public static function getNameField($field, $html = false, $table = null) {
     return parent::getNameField($field, self::getNameTable(), $html);
   }
 
@@ -47,7 +47,7 @@ class alistamientoReparacionBaseTableClass extends tableBaseClass {
    * borrado físico [por defecto] de un registro en una tabla de la base de datos
    * @return \PDOException|boolean
    */
-  public static function delete($ids, $deletedLogical = false, $table = NULL) {
+  public static function delete($ids, $deletedLogical = false, $table = null) {
     return parent::delete(self::getNameTable(), $ids, $deletedLogical);
   }
 
@@ -59,7 +59,7 @@ class alistamientoReparacionBaseTableClass extends tableBaseClass {
    * $data['nombre'] = 'Erika'; $data['apellido'] = 'Galindo';
    * @return \PDOException|boolean
    */
-  public static function insert($data, $table = NULL) {
+  public static function insert($data, $table = null) {
     return parent::insert(self::getNameTable(), $data);
   }
 
@@ -80,7 +80,7 @@ class alistamientoReparacionBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = NULL) {
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
     return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
   }
 
@@ -94,7 +94,8 @@ class alistamientoReparacionBaseTableClass extends tableBaseClass {
    * datos a escribir
    * @return \PDOException|boolean
    */
-  public static function update($ids, $data, $table = NULL) {
+  public static function update($ids, $data, $table = null) {
     return parent::update($ids, $data, self::getNameTable());
   }
+
 }

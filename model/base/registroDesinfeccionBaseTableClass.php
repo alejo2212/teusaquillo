@@ -8,20 +8,20 @@ use mvc\model\table\tableBaseClass;
  * @author Patricia Arteaga <aprendiz.patricia-819@hotmail.com>
  */
 class registroDesinfeccionBaseTableClass extends tableBaseClass {
-  
+
   const ID = 'id';
   const FECHA_REALIZACION = 'fecha_realizacion';
-  const FECHA_TERMINADO= 'fecha_terminado';
+  const FECHA_TERMINADO = 'fecha_terminado';
   const EMPLEADO_ID_RESPONSABLE = 'empleado_id_responsable';
-  const EMPLEADO_ID_VERIFICADOR= 'empleado_id_verificador';
-  const SALIDA_INSUMO_DETALLE_ID= 'salida_insumo_detalle_id';
-  const SOLUCION= 'solucion';
+  const EMPLEADO_ID_VERIFICADOR = 'empleado_id_verificador';
+  const SALIDA_INSUMO_DETALLE_ID = 'salida_insumo_detalle_id';
+  const SOLUCION = 'solucion';
   const SOLUCION_LENGTH = 1024;
-  const OBSERVACION= 'observacion';
+  const OBSERVACION = 'observacion';
   const OBSERVACION_LENGTH = 1024;
-  const TIPO_DESINFECCION_ID= 'tipo_desinfeccion_id';
-  const DELETED_AT= 'deleted_at';
- 
+  const TIPO_DESINFECCION_ID = 'tipo_desinfeccion_id';
+  const DELETED_AT = 'deleted_at';
+
   /**
    * Obtiene el nombre de la tabla
    * @return string
@@ -39,7 +39,7 @@ class registroDesinfeccionBaseTableClass extends tableBaseClass {
    * versión DB
    * @return string
    */
-  public static function getNameField($field, $html = false, $table = NULL) {
+  public static function getNameField($field, $html = false, $table = null) {
     return parent::getNameField($field, self::getNameTable(), $html);
   }
 
@@ -53,7 +53,7 @@ class registroDesinfeccionBaseTableClass extends tableBaseClass {
    * borrado físico [por defecto] de un registro en una tabla de la base de datos
    * @return \PDOException|boolean
    */
-  public static function delete($ids, $deletedLogical = false, $table = NULL) {
+  public static function delete($ids, $deletedLogical = false, $table = null) {
     return parent::delete(self::getNameTable(), $ids, $deletedLogical);
   }
 
@@ -65,7 +65,7 @@ class registroDesinfeccionBaseTableClass extends tableBaseClass {
    * $data['nombre'] = 'Erika'; $data['apellido'] = 'Galindo';
    * @return \PDOException|boolean
    */
-  public static function insert($data, $table = NULL) {
+  public static function insert($data, $table = null) {
     return parent::insert(self::getNameTable(), $data);
   }
 
@@ -86,7 +86,7 @@ class registroDesinfeccionBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = NULL) {
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
     return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
   }
 
@@ -100,7 +100,8 @@ class registroDesinfeccionBaseTableClass extends tableBaseClass {
    * datos a escribir
    * @return \PDOException|boolean
    */
-  public static function update($ids, $data, $table = NULL) {
+  public static function update($ids, $data, $table = null) {
     return parent::update($ids, $data, self::getNameTable());
   }
+
 }

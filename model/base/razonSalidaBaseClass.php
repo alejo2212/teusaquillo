@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 use mvc\model\table\tableBaseClass;
 
@@ -8,13 +8,13 @@ use mvc\model\table\tableBaseClass;
  * @author Aleyda Mina <aleminac@gmail.com>
  */
 class razonSalidaBaseTableClass extends tableBaseClass {
-  
+
   const ID = 'id';
   const RAZON = 'razon';
   const OBSERVACION = 'observacion';
   const OBSERVACION_LENGTH = 1024;
   const DELETED_AT = 'deleted_at';
-  
+
   /**
    * Obtiene el nombre de la tabla
    * @return string
@@ -32,7 +32,7 @@ class razonSalidaBaseTableClass extends tableBaseClass {
    * versión DB
    * @return string
    */
-  public static function getNameField($field, $html = false, $table = NULL) {
+  public static function getNameField($field, $html = false, $table = null) {
     return parent::getNameField($field, self::getNameTable(), $html);
   }
 
@@ -46,7 +46,7 @@ class razonSalidaBaseTableClass extends tableBaseClass {
    * borrado físico [por defecto] de un registro en una tabla de la base de datos
    * @return \PDOException|boolean
    */
-  public static function delete($ids, $deletedLogical = false, $table = NULL) {
+  public static function delete($ids, $deletedLogical = false, $table = null) {
     return parent::delete(self::getNameTable(), $ids, $deletedLogical);
   }
 
@@ -58,7 +58,7 @@ class razonSalidaBaseTableClass extends tableBaseClass {
    * $data['nombre'] = 'Erika'; $data['apellido'] = 'Galindo';
    * @return \PDOException|boolean
    */
-  public static function insert($data, $table = NULL) {
+  public static function insert($data, $table = null) {
     return parent::insert(self::getNameTable(), $data);
   }
 
@@ -79,7 +79,7 @@ class razonSalidaBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = NULL) {
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
     return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
   }
 
@@ -93,7 +93,8 @@ class razonSalidaBaseTableClass extends tableBaseClass {
    * datos a escribir
    * @return \PDOException|boolean
    */
-  public static function update($ids, $data, $table = NULL) {
+  public static function update($ids, $data, $table = null) {
     return parent::update($ids, $data, self::getNameTable());
   }
+
 }

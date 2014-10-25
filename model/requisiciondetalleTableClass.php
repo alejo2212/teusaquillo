@@ -9,5 +9,4 @@ use mvc\model\modelClass;
  */
 class requisiciondetalleTableClass extends requisiciondetalleBaseTableClass {
 
-
 }

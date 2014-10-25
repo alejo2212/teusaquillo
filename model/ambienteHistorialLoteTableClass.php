@@ -1,10 +1,12 @@
 <?php
 
+use mvc\model\modelClass;
+
 /**
- * Description of ambientehistorialloteTableClass 
+ * Description of ambientehistorialloteTableClass
  *
  * @author jhon fernando hoyos <jhonfernandohoyosdiaz@gmail.com>
  */
-class ambienteHistorialLoteTableClass  extends ambienteHistorialLoteBaseTableClass {
-  
+class ambienteHistorialLoteTableClass extends ambienteHistorialLoteBaseTableClass {
+
 }

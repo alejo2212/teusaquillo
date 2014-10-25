@@ -36,10 +36,10 @@ namespace mvc\model\table {
           $flag = 0;
           foreach ($fieldsAndValues as $field => $value) {
             if ($flag === 0) {
-              $sql = $sql . 'WHERE ' . $table . '.' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+              $sql = $sql . 'WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
               $flag++;
             } else {
-              $sql = $sql . 'AND ' . $table . '.' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+              $sql = $sql . 'AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
             }
           }
 
@@ -201,7 +201,7 @@ namespace mvc\model\table {
         $sql = "UPDATE " . $table . " SET ";
 
         foreach ($data as $key => $value) {
-          $sql = $sql . " " . $table . '.' . $key . " = '" . $value . "', ";
+          $sql = $sql . " " . $key . " = '" . $value . "', ";
         }
 
         $newLeng = strlen($sql) - 2;
@@ -210,9 +210,9 @@ namespace mvc\model\table {
         $flag = 0;
         foreach ($ids as $field => $value) {
           if ($flag === 0) {
-            $sql = $sql . 'WHERE ' . $table . '.' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+            $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
           } else {
-            $sql = $sql . 'AND ' . $table . '.' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+            $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
           }
           $flag++;
         }

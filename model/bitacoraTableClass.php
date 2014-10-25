@@ -1,5 +1,7 @@
 <?php
 
+use mvc\model\modelClass;
+
 /**
  * Description of bitacoraTableClass
  *

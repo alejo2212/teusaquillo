@@ -9,6 +9,12 @@ dictionary:
     LeerDocumentacion:    Leer documentación
     VerModuloSeguridad:   Ver módulo de seguridad
     SalirDelSistema:      Salir
+    nombreUsuario:        Nombre de usuario
+    fechaCreacion:        Fecha de creación
+    fechaUltimoLogin:     Fecha de última identificación
+    activado:             Estado activado
+    si:                   Si
+    no:                   No
   errors:
     00001:                El módulo y la acción solicitada, no existe.
     00002:                La dirección que solicita no está registrada.

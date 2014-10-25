@@ -1,7 +1,6 @@
 default:
   index:
-    security: true
+    security: false
     credentials:
-      - trabajador
-      - rojo
-      - [uno, dos]
+      - [trabajador, cajero]
+      - vendedor

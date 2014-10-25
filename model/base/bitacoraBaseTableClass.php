@@ -10,15 +10,16 @@ use mvc\model\table\tableBaseClass;
 class bitacoraBaseTableClass extends tableBaseClass {
   
   const ID = 'id';
-  const CREATED_AT = 'created_at';
-  const USUARIO_ID = 'usuario_id';
   const ACCION = 'accion';
-  const ACCION_LENGTH = 50;
-  const DESCRIPCION = 'descripcion';
-  const DESCRIPCION_LENGTH = 1024;
+  const ACCION_LENGTH = 80;
+  const USUARIO_ID = 'usuario_id';
+  const OBSERVACION = 'observacion';
+  const OBSERVACION_LENGTH = 1024;
+  const FECHA = 'fecha';
   const TABLA = 'tabla';
-  const TABLA_LENGTH = 64;
+  const TABLA_LENGTH = 80;
   const REGISTRO = 'registro';
+  const DELETED_AT = 'deleted_at';
   
   /**
    * Obtiene el nombre de la tabla
@@ -37,7 +38,7 @@ class bitacoraBaseTableClass extends tableBaseClass {
    * versión DB
    * @return string
    */
-  public static function getNameField($field, $html = false) {
+  public static function getNameField($field, $html = false, $table = NULL) {
     return parent::getNameField($field, self::getNameTable(), $html);
   }
 
@@ -51,7 +52,7 @@ class bitacoraBaseTableClass extends tableBaseClass {
    * borrado físico [por defecto] de un registro en una tabla de la base de datos
    * @return \PDOException|boolean
    */
-  public static function delete($ids, $deletedLogical = false) {
+  public static function delete($ids, $deletedLogical = false, $table = NULL) {
     return parent::delete(self::getNameTable(), $ids, $deletedLogical);
   }
 
@@ -63,7 +64,7 @@ class bitacoraBaseTableClass extends tableBaseClass {
    * $data['nombre'] = 'Erika'; $data['apellido'] = 'Galindo';
    * @return \PDOException|boolean
    */
-  public static function insert($data) {
+  public static function insert($data, $table = NULL) {
     return parent::insert(self::getNameTable(), $data);
   }
 
@@ -84,7 +85,7 @@ class bitacoraBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null) {
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = NULL) {
     return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
   }
 
@@ -98,7 +99,7 @@ class bitacoraBaseTableClass extends tableBaseClass {
    * datos a escribir
    * @return \PDOException|boolean
    */
-  public static function update($ids, $data) {
+  public static function update($ids, $data, $table = NULL) {
     return parent::update($ids, $data, self::getNameTable());
   }
 }

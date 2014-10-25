@@ -15,6 +15,16 @@ security:
     javascript:
       - securityIndex.js
 
+sesion:
+  index:
+    javascript:
+      - securityIndex.js
+
+credencial:
+  index:
+    javascript:
+      - securityIndex.js
+
 #default:
 #  index:
 #    meta:

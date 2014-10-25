@@ -4,7 +4,7 @@ use mvc\config\configClass;
 
 configClass::setDbHost('localhost');
 configClass::setDbDriver('pgsql'); // mysql
-configClass::setDbName('mvc');
+configClass::setDbName('teusaquillo');
 configClass::setDbPort(5432); // 3306
 configClass::setDbUser('postgres');
 configClass::setDbPassword('sqlx32');
@@ -15,8 +15,8 @@ configClass::setDbDsn(
         . ';dbname=' . configClass::getDbName()
 );
 
-configClass::setPathAbsolute('/Users/julianlasso/NetBeansProjects/MVC/');
-configClass::setUrlBase('http://localhost/MVC/web/');
+configClass::setPathAbsolute('/Users/julianlasso/NetBeansProjects/teusaquillo/');
+configClass::setUrlBase('http://localhost/teusaquillo/web/');
 
 configClass::setScope('dev'); // prod
 configClass::setDefaultCulture('es');
@@ -34,7 +34,7 @@ configClass::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-of
 
 configClass::setCookieNameRememberMe('mvcSiteRememberMe');
 configClass::setCookieNameSite('mvcSite');
-configClass::setCookiePath('/MVC/web/' . configClass::getIndexFile());
+configClass::setCookiePath('/teusaquillo/web/' . configClass::getIndexFile());
 configClass::setCookieDomain('http://localhost');
 configClass::setCookieTime(3600); // una hora en segundo
 

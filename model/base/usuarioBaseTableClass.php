@@ -10,13 +10,14 @@ use mvc\model\table\tableBaseClass;
 class usuarioBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
-  const ACTIVED = 'actived';
-  const CREATED_AT = 'created_at';
-  const DELETED_AT = 'deleted_at';
-  const USER = 'name_user';
+  const USER = 'user_name';
   const USER_LENGTH = 80;
   const PASSWORD = 'password';
   const PASSWORD_LENGTH = 32;
+  const ACTIVED = 'actived';
+  const CREATED_AT = 'created_at';
+  const UPDATE_AT = 'update_at';
+  const DELETED_AT = 'deleted_at';
   const LAST_LOGIN_AT = 'last_login_at';
 
   /**

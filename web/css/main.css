@@ -1,0 +1,86 @@
+#principal {
+  max-width: 980px;
+  border: solid 1px #c3c3c3
+}
+
+#ejemplo {
+  max-width: 980px;
+  border: solid 1px #c3c3c3;
+  height: 700px;
+}
+
+#bloque1 {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+#bloque2 {
+  padding-right: 30px;
+}
+
+#btna{
+    padding: 2px;
+    margin-left: -5px;
+    margin-top: 30px;
+}
+#divbtn{
+    padding: 5px;
+}
+#pagina{
+    width: 55px;
+    margin-left: 860px;
+    margin-top: 10px;
+}
+#reloj{
+   position: absolute;
+   margin-top: 1px;
+   margin-left: 800px;
+}
+
+#tabla th{
+    width: 350px;
+    background-color: #d5d5d5;
+}
+
+#emple{
+    width: 200px;
+}
+#observa{
+    margin-left: 15px;
+    width: 950px;
+}
+#ingresofecha{
+    margin-left: 1px;
+    width: 235px;
+}
+
+.clrVerde {
+  color: green;
+}
+
+.clrRojo {
+  color: red;
+}
+
+#toolBarGeneral {
+  margin-bottom: 10px;
+}
+
+table > thead > tr > th:first-child {
+  width: 20px;
+}
+
+table > thead > tr, table > tfoot > tr {
+  text-shadow: 0 1px 0 #fff;
+  background-image: -webkit-linear-gradient(top, #fff 0%, #e0e0e0 100%);
+  background-image:      -o-linear-gradient(top, #fff 0%, #e0e0e0 100%);
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fff), to(#e0e0e0));
+  background-image:         linear-gradient(to bottom, #fff 0%, #e0e0e0 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffffff', endColorstr='#ffe0e0e0', GradientType=0);
+  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  background-repeat: repeat-x;
+}
+
+.checkboxFlow {
+  
+}

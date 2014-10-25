@@ -6,7 +6,7 @@ homepage:
     - model/usuarioTableClass.php
 
 default_index:
-  url:    /holamundo.html
+  url:    /default/index
   param:  { module: default, action: index, format: html }
   load:
     - model/base/usuarioBaseTableClass.php
@@ -15,23 +15,52 @@ default_index:
 default_ejemplo:
   url:    /default/ejemplo
   param:  { module: default, action: ejemplo, format: html }
-  #load:
-  #  - mvcBasicPackageDataBase
   
 eventos_publicar:
   url:    /publicar_eventos.html
   param:  { module: eventos, action: publicar, format: html }
+
+#----------------------------Module Sesion ------------------------
+sesion_index:
+  url:    /sesion/index
+  param:  { module: sesion, action: index, format: html }
+  load:
+    - model/base/sesionBaseTableClass.php
+    - model/sesionTableClass.php
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+
+sesion_deleted:
+  url:    /sesion/borrar
+  param:  { module: sesion, action: deleted, format: html }
+
+sesion_view:
+  url:    /sesion/ver
+  param:  { module: sesion, action: view, format: html }
+
+sesion_edit:
+  url:    /sesion/editar
+  param:  { module: sesion, action: edit, format: html }
   
-insumo_index:
-  url:    /insumo/index
-  param:  { module: insumo, action: index, format: html }
+sesion_new:
+  url:    /sesion/nuevo
+  param:  { module: sesion, action: new, format: html }
+  load:
+    - model/base/sesionBaseTableClass.php
+    - model/sesionTableClass.php
+
+sesion_create:
+  url:    /sesion/crear
+  param:  { module: sesion, action: create, format: html }
   
-tipoInsumo_index:
-  url:    /tipoInsumo/index
-  param:  { module: tipoInsumo, action: index, format: html }
+sesion_update:
+  url:    /sesion/actualizar
+  param:  { module: sesion, action: update, format: html }
+  
+#----------------------------Module Security ------------------------
 
 security_index:
-  url:    /seguridad/index
+  url:    /usuario/index
   param:  { module: security, action: index, format: html }
   load:
     - model/base/usuarioBaseTableClass.php
@@ -40,6 +69,9 @@ security_index:
 security_user_view:
   url:    /usuario/ver
   param:  { module: security, action: view, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
     
 security_user_new:
   url:    /usuario/nuevo
@@ -58,11 +90,257 @@ security_user_create:
 security_user_delete:
   url:    /usuario/borrar
   param:  { module: security, action: delete, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
 
 security_user_edit:
   url:    /usuario/editar
   param:  { module: security, action: edit, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
 
 security_user_update:
   url:    /usuario/actualizar
   param:  { module: security, action: update, format: html }
+  load:
+    - model/base/usuarioBaseTableClass.php
+    - model/usuarioTableClass.php
+  
+#----------------------------Module Credencial ------------------------
+
+credencial_index:
+  url:    /permisos/index
+  param:  { module: credencial, action: index, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+
+credencial_view:
+  url:    /permisos/ver
+  param:  { module: credencial, action: view, format: html }
+    
+credencial_new:
+  url:    /permisos/nuevo
+  param:  { module: credencial, action: new, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+  
+credencial_created:
+  url:    /permisos/crear
+  param:  { module: credencial, action: created, format: html }
+  load:
+    - model/base/credencialBaseTableClass.php
+    - model/credencialTableClass.php
+
+credencial_deleted:
+  url:    /permisos/borrar
+  param:  { module: credencial, action: deleted, format: html }
+
+credencial_edit:
+  url:    /permisos/editar
+  param:  { module: credencial, action: edit, format: html }
+
+credencial_update:
+  url:    /permisos/actualizar
+  param:  { module: credencial, action: update, format: html }
+  
+#----------------------------Module Raza ------------------------
+
+raza_index:
+  url:    /raza/index
+  param:  { module: raza, action: index, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+raza_view:
+  url:    /raza/ver
+  param:  { module: raza, action: view, format: html }
+    
+raza_new:
+  url:    /raza/nuevo
+  param:  { module: raza, action: new, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+  
+raza_created:
+  url:    /raza/crear
+  param:  { module: raza, action: created, format: html }
+  load:
+    - model/base/razaBaseTableClass.php
+    - model/razaTableClass.php
+
+raza_deleted:
+  url:    /raza/borrar
+  param:  { module: raza, action: deleted, format: html }
+
+raza_edit:
+  url:    /raza/editar
+  param:  { module: raza, action: edit, format: html }
+
+raza_update:
+  url:    /raza/actualizar
+  param:  { module: raza, action: update, format: html }
+  
+#----------------------------Module localizacion ------------------------
+
+localizacion_index:
+  url:    /localizacion/index
+  param:  { module: localizacion, action: index, format: html }
+  load:
+    - model/base/localidadBaseTableClass.php
+    - model/localidadTableClass.php
+
+localizacion_view:
+  url:    /localizacion/ver
+  param:  { module: localizacion, action: view, format: html }
+    
+localizacion_new:
+  url:    /localizacion/nuevo
+  param:  { module: localizacion, action: new, format: html }
+  load:
+    - model/base/localidadBaseTableClass.php
+    - model/localidadTableClass.php
+  
+localizacion_created:
+  url:    /localizacion/crear
+  param:  { module: localizacion, action: created, format: html }
+  load:
+    - model/base/localidadBaseTableClass.php
+    - model/localidadTableClass.php
+
+localizacion_deleted:
+  url:    /localizacion/borrar
+  param:  { module: localizacion, action: deleted, format: html }
+
+localizacion_edit:
+  url:    /localizacion/editar
+  param:  { module: localizacion, action: edit, format: html }
+
+localizacion_update:
+  url:    /localizacion/actualizar
+  param:  { module: localizacion, action: update, format: html }
+  
+#----------------------------Module Tipo de Identificacion ------------------------
+
+tipoid_index:
+  url:    /Tipo de Identificacion/index
+  param:  { module: tipoid, action: index, format: html }
+  load:
+    - model/base/tipoIdentificacionBaseTableClass.php
+    - model/tipoIdentificacionTableClass.php
+
+tipoid_view:
+  url:    /Tipo de Identificacion/ver
+  param:  { module: tipoid, action: view, format: html }
+    
+tipoid_new:
+  url:    /Tipo de Identificacion/nuevo
+  param:  { module: tipoid, action: new, format: html }
+  load:
+    - model/base/tipoIdentificacionBaseTableClass.php
+    - model/tipoIdentificacionTableClass.php
+  
+tipoid_created:
+  url:    /Tipo de Identificacion/crear
+  param:  { module: tipoid, action: created, format: html }
+  load:
+    - model/base/tipoIdentificacionBaseTableClass.php
+    - model/tipoIdentificacionTableClass.php
+
+tipoid_deleted:
+  url:    /Tipo de Identificacion/borrar
+  param:  { module: tipoid, action: deleted, format: html }
+
+tipoid_edit:
+  url:    /Tipo de Identificacion/editar
+  param:  { module: tipoid, action: edit, format: html }
+
+tipoid_update:
+  url:    /Tipo de Identificacion/actualizar
+  param:  { module: tipoid, action: update, format: html }
+  
+#----------------------------Module Cargo ------------------------
+
+cargo_index:
+  url:    /cargo/index
+  param:  { module: cargo, action: index, format: html }
+  load:
+    - model/base/cargoBaseTableClass.php
+    - model/cargoTableClass.php
+
+cargo_view:
+  url:    /cargo/ver
+  param:  { module: cargo, action: view, format: html }
+  load:
+    - model/base/cargoBaseTableClass.php
+    - model/cargoTableClass.php
+    
+cargo_new:
+  url:    /cargo/nuevo
+  param:  { module: cargo, action: new, format: html }
+  load:
+    - model/base/cargoBaseTableClass.php
+    - model/cargoTableClass.php
+  
+cargo_created:
+  url:    /cargo/crear
+  param:  { module: cargo, action: created, format: html }
+  load:
+    - model/base/cargoBaseTableClass.php
+    - model/cargoTableClass.php
+
+cargo_deleted:
+  url:    /cargo/borrar
+  param:  { module: cargo, action: deleted, format: html }
+
+cargo_edit:
+  url:    /cargo/editar
+  param:  { module: cargo, action: edit, format: html }
+
+cargo_update:
+  url:    /cargo/actualizar
+  param:  { module: cargo, action: update, format: html }
+  
+#----------------------------Module Empleado ------------------------
+
+empleado_index:
+  url:    /empleado/index
+  param:  { module: empleado, action: index, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+
+empleado_view:
+  url:    /empleado/ver
+  param:  { module: empleado, action: view, format: html }
+    
+empleado_new:
+  url:    /empleado/nuevo
+  param:  { module: empleado, action: new, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+  
+empleado_created:
+  url:    /empleado/crear
+  param:  { module: empleado, action: created, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+
+empleado_deleted:
+  url:    /empleado/borrar
+  param:  { module: empleado, action: deleted, format: html }
+
+empleado_edit:
+  url:    /empleado/editar
+  param:  { module: empleado, action: edit, format: html }
+
+empleado_update:
+  url:    /empleado/actualizar
+  param:  { module: empleado, action: update, format: html }

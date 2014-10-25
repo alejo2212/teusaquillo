@@ -22,5 +22,7 @@
       <a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('tipoDesinfeccion', 'index') ?>" type="button" class="btn btn-danger btn-sm"><i class="fa fa-times fa-fw"></i> Cancelar</a>
     </div>
   </div>
+   <?php if (isset($edit) === true and $edit === true):?>
     <input type="hidden" id="<?php echo tipoDesinfeccionTableClass::getNameField(tipoDesinfeccionTableClass::ID, true) ?>" name="<?php echo tipoDesinfeccionTableClass::getNameField(tipoDesinfeccionTableClass::ID, true) ?>" value="<?php echo $objtipoDesinfeccion->$id ?>">
+        <?php endif; ?>
 </form>

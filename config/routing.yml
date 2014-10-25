@@ -407,3 +407,54 @@ tipo_ambiente_update:
   load:
     - model/base/tipoAmbienteBaseTableClass.php
     - model/tipoAmbienteTableClass.php
+  
+   #-----------------------------------Module Tipo De Desinfeccion---------------------------------------
+  
+tipoDesinfeccion_index:
+  url:    /tipoDesinfeccion/index
+  param:  { module: tipoDesinfeccion, action: index, format: html }
+  load:
+    - model/base/tipoDesinfeccionBaseTableClass.php
+    - model/tipoDesinfeccionTableClass.php
+
+tipoDesinfeccion_view:
+  url:    /tipoDesinfeccion/ver
+  param:  { module: tipoDesinfeccion, action: view, format: html }
+  load:
+    - model/base/tipoDesinfeccionBaseTableClass.php
+    - model/tipoDesinfeccionTableClass.php
+    
+tipoDesinfeccion_new:
+  url:    /tipoDesinfeccion/nuevo
+  param:  { module: tipoDesinfeccion, action: new, format: html }
+  load:
+    - model/base/tipoDesinfeccionBaseTableClass.php
+    - model/tipoDesinfeccionTableClass.php
+  
+tipoDesinfeccion_create:
+  url:    /tipoDesinfeccion/crear
+  param:  { module: tipoDesinfeccion, action: create, format: html }
+  load:
+    - model/base/tipoDesinfeccionBaseTableClass.php
+    - model/tipoDesinfeccionTableClass.php
+
+tipoDesinfeccion_delete:
+  url:    /tipoDesinfeccion/borrar
+  param:  { module: tipoDesinfeccion, action: delete, format: html }
+  load:
+    - model/base/tipoDesinfeccionBaseTableClass.php
+    - model/tipoDesinfeccionTableClass.php
+
+tipoDesinfeccion_edit:
+  url:    /tipoDesinfeccion/editar
+  param:  { module: tipoDesinfeccion, action: edit, format: html }
+  load:
+    - model/base/tipoDesinfeccionBaseTableClass.php
+    - model/tipoDesinfeccionTableClass.php
+
+tipoDesinfeccion_update:
+  url:    /tipoDesinfeccion/actualizar
+  param:  { module: tipoDesinfeccion, action: update, format: html }
+  load:
+    - model/base/tipoDesinfeccionBaseTableClass.php
+    - model/tipoDesinfeccionTableClass.php

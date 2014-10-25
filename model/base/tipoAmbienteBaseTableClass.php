@@ -10,7 +10,7 @@ use mvc\model\table\tableBaseClass;
 class tipoAmbienteBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
-  const NOMBRE = '  nombre';
+  const NOMBRE = 'nombre';
   const NOMBRE_LENGTH = 80;
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 1024;

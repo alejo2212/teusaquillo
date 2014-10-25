@@ -318,7 +318,10 @@ empleado_index:
 empleado_view:
   url:    /empleado/ver
   param:  { module: empleado, action: view, format: html }
-    
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+  
 empleado_new:
   url:    /empleado/nuevo
   param:  { module: empleado, action: new, format: html }
@@ -336,11 +339,71 @@ empleado_created:
 empleado_deleted:
   url:    /empleado/borrar
   param:  { module: empleado, action: deleted, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
 
 empleado_edit:
   url:    /empleado/editar
   param:  { module: empleado, action: edit, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
 
 empleado_update:
   url:    /empleado/actualizar
   param:  { module: empleado, action: update, format: html }
+  load:
+    - model/base/empleadoBaseTableClass.php
+    - model/empleadoTableClass.php
+
+  #----------------------------Module Tipo de Ambiente ------------------------
+
+tipo_ambiente_index:
+  url:    /tipoAmbiente/index
+  param:  { module: tipoAmbiente, action: index, format: html }
+  load:
+    - model/base/tipoAmbienteBaseTableClass.php
+    - model/tipoAmbienteTableClass.php
+
+tipo_ambiente_view:
+  url:    /tipoAmbiente/ver
+  param:  { module: tipoAmbiente, action: view, format: html }
+  load:
+    - model/base/tipoAmbienteBaseTableClass.php
+    - model/tipoAmbienteTableClass.php
+  
+tipo_ambiente_new:
+  url:    /tipoAmbiente/nuevo
+  param:  { module: tipoAmbiente, action: new, format: html }
+  load:
+    - model/base/tipoAmbienteBaseTableClass.php
+    - model/tipoAmbienteTableClass.php
+  
+tipo_ambiente_create:
+  url:    /tipoAmbiente/crear
+  param:  { module: tipoAmbiente, action: create, format: html }
+  load:
+    - model/base/tipoAmbienteBaseTableClass.php
+    - model/tipoAmbienteTableClass.php
+
+tipo_ambiente_delete:
+  url:    /tipoAmbiente/borrar
+  param:  { module: tipoAmbiente, action: delete, format: html }
+  load:
+    - model/base/tipoAmbienteBaseTableClass.php
+    - model/tipoAmbienteTableClass.php
+
+tipo_ambiente_edit:
+  url:    /tipoAmbiente/editar
+  param:  { module: tipoAmbiente, action: edit, format: html }
+  load:
+    - model/base/tipoAmbienteBaseTableClass.php
+    - model/tipoAmbienteTableClass.php
+
+tipo_ambiente_update:
+  url:    /tipoAmbiente/actualizar
+  param:  { module: tipoAmbiente, action: update, format: html }
+  load:
+    - model/base/tipoAmbienteBaseTableClass.php
+    - model/tipoAmbienteTableClass.php

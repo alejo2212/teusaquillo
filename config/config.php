@@ -2,12 +2,12 @@
 
 use mvc\config\configClass;
 
-configClass::setDbHost('localhost');
+configClass::setDbHost('127.0.0.1');
 configClass::setDbDriver('pgsql'); // mysql
 configClass::setDbName('teusaquillo');
 configClass::setDbPort(5432); // 3306
 configClass::setDbUser('postgres');
-configClass::setDbPassword('sqlx32');
+configClass::setDbPassword('root');
 configClass::setDbDsn(
         configClass::getDbDriver()
         . ':host=' . configClass::getDbHost()
@@ -15,8 +15,8 @@ configClass::setDbDsn(
         . ';dbname=' . configClass::getDbName()
 );
 
-configClass::setPathAbsolute('/Users/julianlasso/NetBeansProjects/teusaquillo/');
-configClass::setUrlBase('http://localhost/teusaquillo/web/');
+configClass::setPathAbsolute('C:/wamp/www/teusaquillo/');
+configClass::setUrlBase('http://127.0.0.1/teusaquillo/web/');
 
 configClass::setScope('dev'); // prod
 configClass::setDefaultCulture('es');
@@ -35,7 +35,7 @@ configClass::setHeaderExcel2007('Content-Type: application/vnd.openxmlformats-of
 configClass::setCookieNameRememberMe('mvcSiteRememberMe');
 configClass::setCookieNameSite('mvcSite');
 configClass::setCookiePath('/teusaquillo/web/' . configClass::getIndexFile());
-configClass::setCookieDomain('http://localhost');
+configClass::setCookieDomain('http://127.0.0.1');
 configClass::setCookieTime(3600); // una hora en segundo
 
 // configClass::setDefaultModuleSecurity('default');

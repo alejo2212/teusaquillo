@@ -10,7 +10,7 @@ use mvc\model\table\tableBaseClass;
 class unidadMedidaBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
-  const NOMBRE = '  nombre';
+  const NOMBRE = 'nombre';
   const NOMBRE_LENGTH = 50;
   const SIGLA = 'sigla';
   const SIGLA_LENGTH = 10;

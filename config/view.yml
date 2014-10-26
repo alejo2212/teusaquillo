@@ -24,6 +24,24 @@ credencial:
   index:
     javascript:
       - securityIndex.js
+      
+      
+tipoInsumo:
+  index:
+    javascript:
+      - securityIndex.js
+      
+      
+presentacion:
+  index:
+    javascript:
+      - securityIndex.js
+      
+      
+unidadMedida:
+  index:
+    javascript:
+      - securityIndex.js
 
 #default:
 #  index:

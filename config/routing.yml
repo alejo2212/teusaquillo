@@ -458,3 +458,160 @@ tipoDesinfeccion_update:
   load:
     - model/base/tipoDesinfeccionBaseTableClass.php
     - model/tipoDesinfeccionTableClass.php
+    
+
+#-----------------------------------Module TIPO INSUMO---------------------------------------
+  
+tipoInsumo_index:
+  url:    /tipoInsumo/index
+  param:  { module: tipoInsumo, action: index, format: html }
+  load:
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+
+tipoInsumo_view:
+  url:    /tipoInsumo/ver
+  param:  { module: tipoInsumo, action: view, format: html }
+  load:
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    
+tipoInsumo_new:
+  url:    /tipoInsumo/nuevo
+  param:  { module: tipoInsumo, action: new, format: html }
+  load:
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+  
+tipoInsumo_create:
+  url:    /tipoInsumo/crear
+  param:  { module: tipoInsumo, action: create, format: html }
+  load:
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+
+tipoInsumo_delete:
+  url:    /tipoInsumo/borrar
+  param:  { module: tipoInsumo, action: delete, format: html }
+  load:
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+
+tipoInsumo_edit:
+  url:    /tipoInsumo/editar
+  param:  { module: tipoInsumo, action: edit, format: html }
+  load:
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+
+tipoInsumo_update:
+  url:    /tipoInsumo/actualizar
+  param:  { module: tipoInsumo, action: update, format: html }
+  load:
+    - model/base/tipoInsumoBaseTableClass.php
+    - model/tipoInsumoTableClass.php
+    
+
+#-----------------------------------Module PRESENTACION---------------------------------------
+  
+presentacion_index:
+  url:    /presentacion/index
+  param:  { module: presentacion, action: index, format: html }
+  load:
+    - model/base/presentacionBaseTableClass.php
+    - model/presentacionTableClass.php
+
+presentacion_view:
+  url:    /presentacion/ver
+  param:  { module: presentacion, action: view, format: html }
+  load:
+    - model/base/presentacionBaseTableClass.php
+    - model/presentacionTableClass.php
+    
+presentacion_new:
+  url:    /presentacion/nuevo
+  param:  { module: presentacion, action: new, format: html }
+  load:
+    - model/base/presentacionBaseTableClass.php
+    - model/presentacionTableClass.php
+  
+presentacion_create:
+  url:    /presentacion/crear
+  param:  { module: presentacion, action: create, format: html }
+  load:
+    - model/base/presentacionBaseTableClass.php
+    - model/presentacionTableClass.php
+
+presentacion_delete:
+  url:    /presentacion/borrar
+  param:  { module: presentacion, action: delete, format: html }
+  load:
+    - model/base/presentacionBaseTableClass.php
+    - model/presentacionTableClass.php
+
+presentacion_edit:
+  url:    /presentacion/editar
+  param:  { module: presentacion, action: edit, format: html }
+  load:
+    - model/base/presentacionBaseTableClass.php
+    - model/presentacionTableClass.php
+
+presentacion_update:
+  url:    /presentacion/actualizar
+  param:  { module: presentacion, action: update, format: html }
+  load:
+    - model/base/presentacionBaseTableClass.php
+    - model/presentacionTableClass.php
+    
+    
+
+#-----------------------------------Module UNIDAD MEDIDA---------------------------------------
+  
+unidadMedida_index:
+  url:    /unidadMedida/index
+  param:  { module: unidadMedida, action: index, format: html }
+  load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+
+unidadMedida_view:
+  url:    /unidadMedida/ver
+  param:  { module: unidadMedida, action: view, format: html }
+  load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+    
+unidadMedida_new:
+  url:    /unidadMedida/nuevo
+  param:  { module: unidadMedida, action: new, format: html }
+  load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+  
+unidadMedida_create:
+  url:    /unidadMedida/crear
+  param:  { module: unidadMedida, action: create, format: html }
+  load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+
+unidadMedida_delete:
+  url:    /unidadMedida/borrar
+  param:  { module: unidadMedida, action: delete, format: html }
+  load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+
+unidadMedida_edit:
+  url:    /unidadMedida/editar
+  param:  { module: unidadMedida, action: edit, format: html }
+  load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php
+
+unidadMedida_update:
+  url:    /unidadMedida/actualizar
+  param:  { module: unidadMedida, action: update, format: html }
+  load:
+    - model/base/unidadMedidaBaseTableClass.php
+    - model/unidadMedidaTableClass.php

@@ -10,7 +10,7 @@ use mvc\model\table\tableBaseClass;
 class presentacionBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
-  const NOMBRE = '  nombre';
+  const NOMBRE = 'nombre';
   const NOMBRE_LENGTH = 50;
   const OBSERVACION = 'observacion';
   const OBSERVACION_LENGTH = 1024;

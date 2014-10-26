@@ -1,55 +1,58 @@
-
-        <div id="ejemplo" class="container-fluid">
-            <div id="reloj"></div>
-            <h3>GESTION TIPO DE INSUMO</h3>
-            <div id="divbtn">
-                <a href="form_insumo.html"><button id="btna" type="button" class="btn btn-primary btn-sm">+ Nuevo</button></a>
-            </div>
-            
-            <table id="tabla" class="table-bordered table-responsive">
-                <thead>
-                    <tr>
-                        <th>Nombre</th>
-                        <th>Fecha de ingreso</th>
-                        <th>Fecha de vencimiento</th>
-                        <th>Cantidad</th>
-                        <th>Tipo de insumo</th>
-                        <th>Lote</th>
-                        <th>Transportador</th>
-                        <th>Accion</th>
-                    </tr>
-                </thead>
-                <tr>
-                    <td>Alimento para machos</td>
-                    <td>2014-09-25</td>
-                    <td>2014-10-30</td>
-                    <td>2500</td>
-                    <td>Alimento</td>
-                    <td>51</td>
-                    <td>Jhonny Diaz</td>
-                    <td id="btnaccion">
-                        <a href="form_insumos_ver.html" class="btn btn-warning btn-xs"><i class="fa fa-eye" title="VISTA COMPLETA"></i></a>-
-                        <a href="form_insumo_editar.html" class="btn btn-info btn-xs"><i class="fa fa-edit" title="EDITAR"></i></a>-
-                        <a href="" class="btn btn-danger btn-xs" onclick="eliminar();"><i class="fa fa-trash" title="ELIMINAR"></i></a>
-                    </td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                    <td>&nbsp;</td>
-                </tr>
-            </table>
-            
-            <select id="pagina">
-                <option value="1">1</option>
-                <option value="1">2</option>
-                <option value="1">3</option>
-                <option value="1">4</option>
-                <option value="1">5</option>
-            </select>de 5
+<?php \mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
+<div class="container container-fluid">
+    <?php if (count($objtipoInsumo) === 0): ?>
+        <h1>No existen datos</h1>
+    <?php else: ?>
+        <div id="toolBarGeneral" role="toolbar">
+            <a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('tipoInsumo', 'new') ?>" class="btn btn-success btn-xs"><i class="fa fa-plus fa-fw"></i> Nuevo</a>
+            <a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('tipoInsumo', 'delete') ?>" class="btn btn-danger btn-xs"><i class="fa fa-times fa-fw"></i> Eliminar</a>
+            <a href="#" class="btn btn-primary btn-xs"><i class="fa fa-filter fa-fw"></i> Filtros</a>
+            <a href="#" class="btn btn-default btn-xs"><i class="fa fa-refresh fa-fw"></i> Resetear</a>
         </div>
+        <form action="" method="post">
+            <div class="table-responsive">
+                <table class="table table-hover table-bordered">
+                    <thead>
+                        <tr>
+                            <th class="text-center"><input type="checkbox" id="chkAll"></th>
+                            <th>Id</th>
+                            <th>Nombre</th>
+                            <th>Observacion</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <?php $id = tipoInsumoTableClass::ID ?>
+                        <?php $nombre = tipoInsumoTableClass::NOMBRE ?>
+                        <?php $observacion = tipoInsumoTableClass::OBSERVACION ?>
+
+                        <?php foreach ($objtipoInsumo as $data): ?>
+                            <tr>
+                                <td class="text-center"><input type="checkbox" id="chk<?php echo $data->$id ?>" name="chk[]" value="<?php echo $data->$id ?>"></td>
+                                <td><?php echo $data->$id ?></td>
+                                <td><?php echo $data->$nombre ?></td> 
+                                <td><?php echo $data->$observacion ?></td>
+
+                                <td>
+                                    <a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('tipoInsumo', 'view', array(tipoInsumoTableClass::ID => $data->$id)) ?>" class="btn btn-warning btn-xs" data-toggle="tooltip" data-placement="top" title="Ver"><i class="fa fa-eye"></i></a>
+                                    <a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('tipoInsumo', 'edit', array(tipoInsumoTableClass::ID => $data->$id)) ?>" class="btn btn-primary btn-xs" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit"></i></a>
+                                    <a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('tipoInsumo', 'delete', array(tipoInsumoTableClass::ID => $data->$id)) ?>" class="btn btn-danger btn-xs" data-toggle="tooltip" data-placement="top" title="Borrar"><i class="fa fa-times"></i></a>
+                                </td>
+                            </tr>
+                        <?php endforeach ?>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td colspan="5" class="text-right">
+                                Página <select id="slcPage">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                </select> de 2
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </form>
+    <?php endif ?>
+</div>

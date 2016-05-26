@@ -15,17 +15,102 @@ use mvc\i18n\i18nClass as i18n;
  */
 class indexActionClass extends controllerClass implements controllerActionInterface {
 
-    public function execute() {
-        $fields = array(
-        tipoAmbienteTableClass::ID,
-        tipoAmbienteTableClass::NOMBRE,
-        tipoAmbienteTableClass::DESCRIPCION,
-        tipoAmbienteTableClass::OBSERVACION,
-        tipoAmbienteTableClass::DELETED_AT
-                
-        );
-        $this->objTipoambiente = tipoAmbienteTableClass::getAll($fields, true, array(tipoAmbienteTableClass::NOMBRE), 'ASC');
-        $this->defineView('index', 'tipoAmbiente', session::getInstance()->getFormatOutput());
+  public function execute() {
+    try {
+      session::getInstance()->deleteAttribute('form');
+      $fields = array(
+          tipoAmbienteTableClass::ID,
+          tipoAmbienteTableClass::NOMBRE,
+          tipoAmbienteTableClass::DESCRIPCION,
+          tipoAmbienteTableClass::OBSERVACION,
+          tipoAmbienteTableClass::DELETED_AT
+      );
+      $this->page = 0;
+
+
+
+      if (request::getInstance()->hasGet('page')) {
+        $this->page = (request::getInstance()->getGet('page') - 1);
+      }
+      $where = $this->filters();
+
+      if (request::getInstance()->hasGet('r') == 'true') {
+        session::getInstance()->deleteAttribute('where');
+      }
+      if (session::getInstance()->hasAttribute('where')) {
+        $where = session::getInstance()->getAttribute('where');
+//        session::getInstance()->setFlash('where', $where);
+//        echo 'hay atributo';
+      } else {
+        if ($where != null) {
+          session::getInstance()->setAttribute('where', $where);
+//          echo 'creo atributo';
+        }
+      }
+
+      $this->countPages = tipoAmbienteTableClass::getCountPagesByWhere($where);
+
+      $this->countPages = tipoAmbienteTableClass::getCountPages();
+      $this->objTipoambiente = tipoAmbienteTableClass::getAll($fields, true, array(tipoAmbienteTableClass::NOMBRE), 'ASC', config::getRowGrid(), ($this->page * config::getRowGrid()), $where);
+      $this->defineView('index', 'tipoAmbiente', session::getInstance()->getFormatOutput());
+    } catch (PDOException $exc) {
+      switch ($exc->getCode()) {
+        case 23505:
+          session::getInstance()->setError('El cargo que intenta registar ya existe en la base de datos');
+          break;
+        case 00006:
+          session::getInstance()->setWarning($exc->getMessage());
+          break;
+        case '22P02':
+          session::getInstance()->setWarning('Ingresar datos validos');
+          break;
+        default:
+          session::getInstance()->setError($exc->getMessage());
+          break;
+      }
+      routing::getInstance()->redirect('tipoAmbiente', 'index');
+      //routing::getInstance()->forward('security', 'new');
     }
+  }
+
+  private function filters() {
+    $where = array();
+
+    if (
+            request::getInstance()->hasPost(tipoAmbienteTableClass::getNameField(tipoAmbienteTableClass::NOMBRE, true))
+            and
+            request::getInstance()->getPost(tipoAmbienteTableClass::getNameField(tipoAmbienteTableClass::NOMBRE, true)) !== ''
+    ) {
+      $where[tipoAmbienteTableClass::getNameField(tipoAmbienteTableClass::NOMBRE)] = request::getInstance()->getPost(tipoAmbienteTableClass::getNameField(tipoAmbienteTableClass::NOMBRE, true));
+    }
+    if (
+            request::getInstance()->hasPost(tipoAmbienteTableClass::getNameField(tipoAmbienteTableClass::DESCRIPCION, true))
+            and
+            request::getInstance()->getPost(tipoAmbienteTableClass::getNameField(tipoAmbienteTableClass::DESCRIPCION, true)) !== ''
+    ) {
+      $where[tipoAmbienteTableClass::getNameField(tipoAmbienteTableClass::DESCRIPCION)] = request::getInstance()->getPost(tipoAmbienteTableClass::getNameField(tipoAmbienteTableClass::DESCRIPCION, true));
+    }
+
+//        if (
+//                (
+//                request::getInstance()->hasPost(usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_ini')
+//                and
+//                request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_ini') !== ''
+//                )
+//                and (
+//                request::getInstance()->hasPost(usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_fin')
+//                and
+//                request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_fin') !== ''
+//                )
+//        ) {
+//            $where[usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT)] = array(
+//                request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_ini'),
+//                request::getInstance()->getPost(usuarioTableClass::getNameField(usuarioTableClass::CREATED_AT, true) . '_fin'),
+//            );
+//        }
+
+
+    return $where;
+  }
 
 }

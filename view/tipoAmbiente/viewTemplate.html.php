@@ -1,32 +1,26 @@
-<?php
-
-use mvc\i18n\i18nClass ?>
-        <?php \mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
+<?php use mvc\i18n\i18nClass ?>
+<?php \mvc\view\viewClass::includePartial('default/menuPrincipal') ?>
 <div class="container container-fluid">
     <fieldset>
         <?php $id = tipoAmbienteTableClass::ID ?>
         <?php $nombre = tipoAmbienteTableClass::NOMBRE ?>
-<?php $descripcion = tipoAmbienteTableClass::DESCRIPCION ?>
-<?php $observacion = tipoAmbienteTableClass::OBSERVACION ?>
+        <?php $descripcion = tipoAmbienteTableClass::DESCRIPCION ?>
+        <?php $observacion = tipoAmbienteTableClass::OBSERVACION ?>
 
-        <legend><h1><i class="fa fa-user"></i> Nombre "<?php echo $tipoAmbiente->$nombre ?>"</h1></legend>
+        <legend><h1><i class="fa fa-user"></i><?php echo i18nClass::__('nombre') ?>  "<?php echo $tipoAmbiente->$nombre ?>"</h1></legend>
         <div class="list-group">
             <div class="list-group-item">
-                <h4 class="list-group-item-heading">Descripcion</h4>
+                <h4 class="list-group-item-heading"><?php echo i18nClass::__('descripcion') ?></h4>
                 <p class="list-group-item-text"><?php echo $tipoAmbiente->$descripcion ?></p>
             </div>
             <div class="list-group-item">
-                <h4 class="list-group-item-heading">Observacion</h4>
-                <p class="list-group-item-text"><?php echo $tipoAmbiente->$observacion ?></p>
+                <h4 class="list-group-item-heading"><?php echo i18nClass::__('observacion') ?></h4>
+                <p class="list-group-item-text"><?php echo ($tipoAmbiente->$observacion) ? $tipoAmbiente->$observacion : 'Ninguna' ?></p>
             </div>
-
-
-
-
         </div>
     </fieldset>
     <div class="text-right">
-        <a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('tipoAmbiente', 'index') ?>" class="btn btn-default btn-sm"><i class="fa fa-table fa-fw"></i> Volver</a>
-        <a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('tipoAmbiente', 'edit', array($id => $tipoAmbiente->$id)) ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit fa-fw"></i> Editar</a>
+        <a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('tipoAmbiente', 'index') ?>" class="btn btn-default btn-sm"><i class="fa fa-table fa-fw"></i><?php echo i18nClass::__('volver') ?></a>
+        <a href="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('tipoAmbiente', 'edit', array($id => $tipoAmbiente->$id)) ?>" class="btn btn-primary btn-sm"><i class="fa fa-edit fa-fw"></i><?php echo i18nClass::__('editar') ?> </a>
     </div>
 </div>

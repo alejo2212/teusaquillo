@@ -12,7 +12,7 @@ class controlAlimentoBaseTableClass extends tableBaseClass {
   const ID = 'id';
   const AMBIENTE_HISTORIAL_LOTE_ID = 'ambiente_historial_lote_id';
   const SALIDA_INSUMO_DETALLE_ID = 'salida_insumo_detalle_id';
-  const ID_EMPLEADO = 'cookie';
+  const ID_EMPLEADO = 'id_empleado';
   const SEXO = 'sexo';
   const CANTIDAD = 'cantidad';
   const FECHA = 'fecha';
@@ -49,7 +49,7 @@ class controlAlimentoBaseTableClass extends tableBaseClass {
    * @return \PDOException|boolean
    */
   public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+    return parent::delete($ids, $deletedLogical, self::getNameTable());
   }
 
   /**
@@ -81,8 +81,8 @@ class controlAlimentoBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null,$where=null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

@@ -3,7 +3,7 @@
 use mvc\model\table\tableBaseClass;
 
 /**
- * Description of usuarioClass
+ * Description of usuarioBaseTableClass
  *
  * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
  */
@@ -51,8 +51,8 @@ class usuarioBaseTableClass extends tableBaseClass {
    * borrado físico de un registro en una tabla de la base de datos
    * @return PDOException|boolean
    */
-  public static function delete($ids, $deletedLogical = true, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+  public static function delete($ids, $deletedLogical = false, $table = null) {
+    return parent::delete($ids, $deletedLogical, self::getNameTable());
   }
 
   /**
@@ -84,8 +84,8 @@ class usuarioBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where = null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

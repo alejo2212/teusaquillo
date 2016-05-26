@@ -16,6 +16,13 @@ use mvc\i18n\i18nClass as i18n;
 class newActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
+
+    if(session::getInstance()->hasAttribute('form')) {
+      $usuario = session::getInstance()->getAttribute('form');
+      session::getInstance()->setFlash('usuario', $usuario);
+    }
+    
+    session::getInstance()->setInformation('La contraseña no debe de contener caracteres especiales (\\*@;.,)');
     $this->defineView('new', 'security', session::getInstance()->getFormatOutput());
   }
 

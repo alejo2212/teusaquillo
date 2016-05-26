@@ -17,21 +17,17 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
 
   public function execute() {
     try {
-      if (request::getInstance()->isMethod('GET')) {
-
-        $id = request::getInstance()->getGet(cargoTableClass::getNameField(cargoTableClass::ID, true));
-        
-        $data = array(
-            cargoTableClass::ID => $id
-        );
-
-        $this->objCargo = cargoTableClass::getCargo($data);
+      if (request::getInstance()->hasGet('id')) {
+        $id = request::getInstance()->getGet('id');
+        $this->objCargo = cargoTableClass::getCargo($id);
         $this->defineView('view', 'cargo', session::getInstance()->getFormatOutput());
       } else {
         routing::getInstance()->redirect('cargo', 'index');
       }
-    } catch (Exception $exc) {
-      echo $exc->getMessage();
+    } catch (PDOException $exc) {
+      session::getInstance()->setError($exc->getMessage());
+      routing::getInstance()->redirect('cargo', 'index');
     }
   }
+
 }

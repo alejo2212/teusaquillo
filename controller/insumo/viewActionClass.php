@@ -20,15 +20,15 @@ class viewActionClass extends controllerClass implements controllerActionInterfa
       if (request::getInstance()->hasGet('id')) {
         $id = request::getInstance()->getGet('id');
         
-        $this->objtipoInsumo = tipoInsumoTableClass::getTipoInsumoById($id);
+        $this->objinsumo = insumoTableClass::getInsumoById($id);
         
-        $this->defineView('view', 'tipoInsumo', session::getInstance()->getFormatOutput());
+        $this->defineView('view', 'insumo', session::getInstance()->getFormatOutput());
       } else {
-        routing::getInstance()->redirect('tipoInsumo', 'index');
+        routing::getInstance()->redirect('insumo', 'index');
       }
     } catch (PDOException $exc) {
       session::getInstance()->setError($exc->getMessage());
-      routing::getInstance()->redirect('tipoInsumo', 'index');
+      routing::getInstance()->redirect('insumo', 'index');
     }
   }
 

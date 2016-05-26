@@ -8,6 +8,7 @@ namespace mvc\routing {
   use mvc\dispatch\dispatchClass;
   use mvc\config\configClass;
   use mvc\i18n\i18nClass;
+  use mvc\cache\cacheManagerClass;
 
   /**
    * Description of routingClass
@@ -39,8 +40,8 @@ namespace mvc\routing {
      * @return array
      */
     public function validateRouting($module, $action = null) {
-      $yamlRouting = \sfYaml::load(configClass::getPathAbsolute() . 'config/routing.yml');
-      if (preg_match('/^@/', $module) === 1 and $action === null) {
+      $yamlRouting = cacheManagerClass::getInstance()->loadYaml(configClass::getPathAbsolute() . 'config/routing.yml', 'routingYaml');
+      if (preg_match('/^@\w+/', $module) === 1 and $action === null) {
         if (!isset($yamlRouting[$module])) {
           throw new Exception('La ruta "' . $module . '" no está definida');
         } else {
@@ -76,15 +77,16 @@ namespace mvc\routing {
       if (preg_match('/^@/', $module) === 1) {
         $routing = $this->validateRouting($module);
         $module = $routing['param']['module'];
-        $variables = $action;
+//        $variables = $action;
         $action = $routing['param']['action'];
       } else {
         $routing = $this->validateRouting($module, $action);
       }
-      sessionClass::getInstance()->setModule($module);
-      sessionClass::getInstance()->setAction($action);
-      requestClass::getInstance()->addParamGet($variables);
-      dispatchClass::getInstance()->main();
+//      sessionClass::getInstance()->setModule($module);
+//      sessionClass::getInstance()->setAction($action);
+//      requestClass::getInstance()->addParamGet($variables);
+
+      dispatchClass::getInstance()->main($module, $action);
       exit();
     }
 
@@ -112,7 +114,7 @@ namespace mvc\routing {
      * @param array $variables [optional]
      */
     public function getUrlWeb($module, $action = null, $variables = null) {
-      if (preg_match('/^@/', $module) === 1) {
+      if (preg_match('/(^\@)(\w+)/', $module) === 1) {
         $routing = $this->validateRouting($module);
         $module = $routing['param']['module'];
         $variables = $this->genVariables($action);
@@ -135,15 +137,32 @@ namespace mvc\routing {
      * @param array $variables [optional]
      */
     public function redirect($module, $action = null, $variables = null) {
-      if (preg_match('/^@/', $module) === 1 and $action === null) {
+      if (preg_match('/(^\@)(\w+)/', $module) === 1 and $action === null) {
         header('Location: ' . $this->getUrlWeb($module, $action));
       } else {
         header('Location: ' . $this->getUrlWeb($module, $action, $variables));
       }
     }
 
-    public function registerModuleAndAction() {
-      if (requestClass::getInstance()->hasServer('PATH_INFO')) {
+    public function registerModuleAndAction($module = null, $action = null) {
+      if ($module !== null and $action !== null) {
+        $yamlRouting = cacheManagerClass::getInstance()->loadYaml(configClass::getPathAbsolute() . 'config/routing.yml', 'routingYaml');
+        $flag = false;
+        foreach ($yamlRouting as $routing) {
+          if ($module === $routing['param']['module'] and $action === $routing['param']['action']) {
+            sessionClass::getInstance()->setModule($routing['param']['module']);
+            sessionClass::getInstance()->setAction($routing['param']['action']);
+            sessionClass::getInstance()->setLoadFiles(((isset($routing['load'])) ? $routing['load'] : null));
+            sessionClass::getInstance()->setFormatOutput($routing['param']['format']);
+            $flag = true;
+            break;
+          }
+        }
+        if ($flag === false) {
+          throw new \Exception(i18nClass::__(00002, null, 'errors'), 00002);
+        }
+        return true;
+      } elseif (requestClass::getInstance()->hasServer('PATH_INFO')) {
         $data = explode('/', requestClass::getInstance()->getServer('PATH_INFO'));
         if (($data[0] === '' and ! isset($data[1])) or ( $data[0] === '' and $data[1] === '')) {
           $this->registerDefaultModuleAndAction();
@@ -154,7 +173,7 @@ namespace mvc\routing {
             $url .= (isset($data[($key + 1)])) ? '\/' : '';
           }
           $url .= ')/';
-          $yamlRouting = \sfYaml::load(configClass::getPathAbsolute() . 'config/routing.yml');
+          $yamlRouting = cacheManagerClass::getInstance()->loadYaml(configClass::getPathAbsolute() . 'config/routing.yml', 'routingYaml');
           $flag = false;
           foreach ($yamlRouting as $routing) {
             if (preg_match($url, $routing['url']) === 1) {
@@ -167,7 +186,7 @@ namespace mvc\routing {
             }
           }
           if ($flag === false) {
-            throw new \Exception(i18nClass::__(00002, null, 'errors'),00002);
+            throw new \Exception(i18nClass::__(00002, null, 'errors'), 00002);
           }
           return true;
         }
@@ -177,7 +196,7 @@ namespace mvc\routing {
     }
 
     private function registerDefaultModuleAndAction() {
-      $yamlRouting = \sfYaml::load(configClass::getPathAbsolute() . 'config/routing.yml');
+      $yamlRouting = cacheManagerClass::getInstance()->loadYaml(configClass::getPathAbsolute() . 'config/routing.yml', 'routingYaml');
       sessionClass::getInstance()->setModule($yamlRouting['homepage']['param']['module']);
       sessionClass::getInstance()->setAction($yamlRouting['homepage']['param']['action']);
       sessionClass::getInstance()->setLoadFiles(((isset($yamlRouting['homepage']['load'])) ? $yamlRouting['homepage']['load'] : false));

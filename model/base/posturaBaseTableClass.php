@@ -11,10 +11,10 @@ use mvc\model\table\tableBaseClass;
 class posturaBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
-  const AMBIENTE_HISTORIAL_LOTE_ID = 'ambiente_historial_lote_id';
   const FECHA = 'fecha';
-  const CANTIDAD = 'cantidad';
-  const DELETED_AT = 'delete_at';
+  const LOTE_ID = 'lote_id';
+  const AMBIENTE_ID = 'ambiente_id';
+  const DELETED_AT = 'deleted_at';
 
   /**
    * Obtiene el nombre de la tabla
@@ -48,7 +48,7 @@ class posturaBaseTableClass extends tableBaseClass {
    * @return \PDOException|boolean
    */
   public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+    return parent::delete($ids, $deletedLogical, self::getNameTable());
   }
 
   /**
@@ -80,8 +80,8 @@ class posturaBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where=null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

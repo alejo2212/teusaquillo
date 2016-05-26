@@ -18,7 +18,7 @@
     <div class="list-group">
       <div class="list-group-item">
         <h4 class="list-group-item-heading">Observacion</h4>
-        <p class="list-group-item-text"><?php echo $objunidadMedida->$observacion ?></p>
+        <p class="list-group-item-text"><?php echo ($objunidadMedida->$observacion) ? $objunidadMedida->$observacion : 'Ninguna' ?></p>
       </div>
     </div>
   </fieldset>

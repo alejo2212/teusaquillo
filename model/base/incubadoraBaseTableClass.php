@@ -17,8 +17,8 @@ class incubadoraBaseTableClass extends tableBaseClass {
   const OBSERVACION_LENGTH = 1024;
   const DIRECCION = 'direccion';
   const DIRECCION_LENGTH = 1024;
-  const LOCALIZACION = "localizacion";
-  const DELETE = "delete";
+  const LOCALIZACION_ID = "localizacion_id";
+  const DELETED_AT = "deleted_at";
 
   /**
    * Obtiene el nombre de la tabla
@@ -52,7 +52,7 @@ class incubadoraBaseTableClass extends tableBaseClass {
    * @return \PDOException|boolean
    */
   public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+    return parent::delete($ids, $deletedLogical, self::getNameTable());
   }
 
   /**
@@ -84,8 +84,8 @@ class incubadoraBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where=null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

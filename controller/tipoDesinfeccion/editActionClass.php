@@ -26,9 +26,23 @@ class editActionClass extends controllerClass implements controllerActionInterfa
         routing::getInstance()->redirect('tipoDesinfeccion', 'index');
       }
     } catch (PDOException $exc) {
-      session::getInstance()->setError($exc->getMessage());
-      routing::getInstance()->redirect('tipoDesinfeccion', 'index');
-    }
+            switch ($exc->getCode()) {
+                case 23505:
+                    session::getInstance()->setError('El cargo que intenta registar ya existe en la base de datos');
+                    break;
+                case 00006:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                case '22P02':
+                    session::getInstance()->setWarning('Ingresar datos validos');
+                    break;
+                default:
+                    session::getInstance()->setError($exc->getMessage());
+                    break;
+            }
+            routing::getInstance()->redirect('tipoDesinfeccion', 'index');
+            //routing::getInstance()->forward('security', 'new');
+        }
   }
 
 }

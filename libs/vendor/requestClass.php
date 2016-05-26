@@ -134,6 +134,10 @@ namespace mvc\request {
       return isset($this->request[$param]);
     }
 
+    public function setMethod($method) {
+      $this->server['REQUEST_METHOD'] = $method;
+    }
+
   }
 
 }

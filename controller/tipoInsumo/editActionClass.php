@@ -11,23 +11,41 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
-@author jhon fernando hoyos diaz <aprendiz.jhonfernandohoyosdiaz@gmail.com> */
+  @author jhon fernando hoyos diaz <aprendiz.jhonfernandohoyosdiaz@gmail.com> */
 class editActionClass extends controllerClass implements controllerActionInterface {
 
-  public function execute() {
-    try {
-      if (request::getInstance()->hasGet('id')) {
-        $id = request::getInstance()->getGet('id');
-        $this->objtipoInsumo = tipoInsumoTableClass::getTipoInsumoById($id);
-        $this->edit = true;
-        $this->defineView('edit', 'tipoInsumo', session::getInstance()->getFormatOutput());
-      } else {
-        routing::getInstance()->redirect('tipoInsumo', 'index');
-      }
-    } catch (PDOException $exc) {
-      session::getInstance()->setError($exc->getMessage());
-      routing::getInstance()->redirect('tipoInsumo', 'index');
+    public function execute() {
+        try {
+            if (request::getInstance()->hasGet('id')) {
+                $id = request::getInstance()->getGet('id');
+                $this->objtipoInsumo = tipoInsumoTableClass::getTipoInsumoById($id);
+                $this->edit = true;
+                $this->defineView('edit', 'tipoInsumo', session::getInstance()->getFormatOutput());
+            } else {
+                routing::getInstance()->redirect('tipoInsumo', 'index');
+            }
+            session::getInstance()->deleteAttribute('form');
+        } catch (PDOException $exc) {
+            switch ($exc->getCode()) {
+                case 23505:
+                    session::getInstance()->setError('El Tipo de Insumo que intenta registar ya existe en la base de datos');
+                    break;
+                case 00006:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                case 00007:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                case 00008:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                default:
+                    session::getInstance()->setError($exc->getMessage());
+                    break;
+            }
+            routing::getInstance()->redirect('tipoInsumo', 'edit');
+            //routing::getInstance()->forward('security', 'new');
+        }
     }
-  }
 
 }

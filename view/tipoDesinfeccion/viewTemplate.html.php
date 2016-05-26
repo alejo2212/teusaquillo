@@ -5,11 +5,17 @@
     <?php $id = tipoDesinfeccionTableClass::ID ?>
     <?php $nombre = tipoDesinfeccionTableClass::NOMBRE ?>
     <?php $observacion = tipoDesinfeccionTableClass::OBSERVACION?>
-    <legend><h1><i class="fa fa-user"></i> Nombre "<?php echo $objtipoDesinfeccion->$nombre ?>"</h1></legend>
+    <legend><h1><i class="fa fa-area-chart"></i> Tipo Desinfeccion </h1></legend>
+    <div class="list-group">
+      <div class="list-group-item">
+        <h4 class="list-group-item-heading">Nombre</h4>
+        <p class="list-group-item-text"><?php echo $objtipoDesinfeccion->$nombre ?></p>
+      </div>
+    </div>
     <div class="list-group">
       <div class="list-group-item">
         <h4 class="list-group-item-heading">Observacion</h4>
-        <p class="list-group-item-text"><?php echo $objtipoDesinfeccion->$observacion ?></p>
+        <p class="list-group-item-text"><?php echo ($objtipoDesinfeccion->$observacion) ? $objtipoDesinfeccion->$observacion : 'Ninguna' ?></p>
       </div>
     </div>
   </fieldset>

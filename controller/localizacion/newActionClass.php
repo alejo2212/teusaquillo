@@ -16,13 +16,11 @@ use mvc\i18n\i18nClass as i18n;
 class newActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
-    $fields = array(
-        localidadTableClass::ID,
-        localidadTableClass::NOMBRE,
-        localidadTableClass::LOCALIDAD_ID,
-        localidadTableClass::DELETED_AT
-    );
-    $this->objLocalidad = localidadTableClass::getAll($fields, true, array(localidadTableClass::NOMBRE), 'ASC');
+    if (session::getInstance()->hasAttribute('form')) {
+      $localidad = session::getInstance()->getAttribute('form');
+      session::getInstance()->setFlash('localidad', $localidad);
+    }
+    $this->objLocalidad = localidadTableClass::getLocalidades();
     $this->defineView('new', 'localizacion', session::getInstance()->getFormatOutput());
   }
 

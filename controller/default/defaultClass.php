@@ -16,7 +16,7 @@ use mvc\i18n\i18nClass as i18n;
 class defaultClass extends controllerClass implements controllerInterface {
 
   public function indexAction() {
-    $this->mensaje = 'hola index 2';
+    $this->mensaje = 'Bienvenido al sistema Soveuh System';
     $this->defineView('index', 'default', session::getInstance()->getFormatOutput());
   }
 

@@ -1,6 +1,22 @@
 default:
   index:
-    security: false
+    security: true
     credentials:
-      - [trabajador, cajero]
-      - vendedor
+      - [Administrador]
+
+insumo:
+  index:
+    security: true
+    credentials:
+      - [Administrador]
+  new:
+    security: true
+    credentials:
+      - Administrador
+
+presentacion:
+  index:
+    security: true
+    credentials:
+      - Administrador
+    

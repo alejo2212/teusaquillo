@@ -30,7 +30,7 @@ namespace mvc\controller {
       $this->format = $format;
     }
 
-    public function __destruct() {
+    public function renderView() {
       viewClass::renderHTML($this->module, $this->view, $this->format, $this->arg);
     }
 

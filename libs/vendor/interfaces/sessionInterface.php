@@ -11,6 +11,10 @@ namespace mvc\interfaces {
 
     public static function getInstance();
 
+    public function deleteCredentials();
+
+    public function deleteAttribute($attribute);
+
     public function setAttribute($attribute, $value);
 
     public function getAttribute($attribute);
@@ -95,7 +99,15 @@ namespace mvc\interfaces {
 
     public function getUserId();
 
+    public function hasUserId();
+
     public function getUserName();
+
+    public function setCache($cache, $value);
+
+    public function getCache($cache);
+
+    public function hasCache($cache);
   }
 
 }

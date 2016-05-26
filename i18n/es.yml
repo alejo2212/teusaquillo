@@ -15,6 +15,110 @@ dictionary:
     activado:             Estado activado
     si:                   Si
     no:                   No
+    descripcionCargo:     Descripcion del Cargo
+    cargo:                Cargo
+    credencialNombre:     Credencial
+    fechacreacion:        Fecha de Creacion
+    ciudad:               Ciudad
+    departamento:         Departamento
+    descripcion:          Descripcion
+    abreviatura:          Abreviatura
+    empleado:             Empleado
+    controlalimento:      Control Alimento
+    sexo:                 Sexo
+    empleado:             Empleado
+    cantidad:             Cantidad
+    semana:               Semana
+    observacion:          Observacion
+    requisicion1:          Requisicion
+    anulado:              Anulado
+#-------------------  ALEYDA MINA --------------------------------------------
+    nuevo:                      Nuevo
+    editarAmbiente:             Editar  Ambiente
+    close:                      Close
+    lote:                       Lote
+    tipoAmbiente:               Tipo Ambiente
+    filtrar:                    Filtrar
+    nombre:                     Nombre
+    volver:                     Volver
+    cancelar:                   Cancelar
+    eliminar:                   Eliminar
+    noExistenDatos:             No existen Datos
+    acciones:                   Acciones
+    observacion:                Observacion
+    registrar:                  Registrar
+    nuevoAmbiente:              Nuevo Ambiente
+    resetear:                   Resetear
+    editar:                     Editar
+    editarAmbienteInsumo:       Editar Ambiente Insumo
+    ambiente:                   Ambiente
+    salidaInsumo:               Numero Salida Insumo
+    fechaAsignacion:            Fecha Asignacion
+    fechaRetiro:                Fecha Retiro
+    insumo:                     Insumo Numero
+    nuevoAmbienteInsumo:        Nuevo Ambiente Insumo
+    editarLote:                 Editar Lote
+    lote:                       Lote
+    fechaEntradaGranja:         Fecha Entrada Granja
+    fechaEntradaProduccion:     Fecha Entrada Produccion
+    cantidadHembras:            Cant. Hembras
+    cantidadMachos:             Cant. Machos
+    cantidadTotal:              Cant. Total
+    empleado:                   Empleado
+    fechaSalidaEstipulada:      Fecha Salida Estipulada
+    fechaSalidaReal:            Fecha Salida Real
+    pesoPromedioHembras:        Peso Promedio Hembras
+    pesoPromedioMachos:         Peso Promedio Machos
+    raza:                       Raza
+    seleccione:                 Seleccione
+    descripcion:                Descripcion
+    foto:                       Foto
+    fechaEliminacion:           Fecha Eliminacion
+    nuevaRaza:                  Nueva Raza
+    razon:                      Razon
+    empleadoEntrega:            Empleado Entrega
+    empleadoRecibe:             Empleado Recibe
+    requisicion:                N° Requisicion
+    nuevaSalidaInsumo:          Nueva Salida Insumo
+    estado:                     Estado
+    editarSalidaInsumoDetalle:  Editar Salida Insumo Detalle
+    bodega:                     Bodega Numero
+    cantidad:                   Cantidad
+    anulado:                    Anulado
+    editarSalidaLote:           editar Salida Lote
+    ambienteHistorialLote:      N° Amb. Hist. lote
+    razonSalida:                Razon Salida
+    editarTipoAmbiente:         Editar Tipo Ambiente 
+    nuevoTipoAmbiente:          Nuevo Tipo Ambiente
+    fecha:                      Fecha
+    editarSalidaInsumo:         Editar Salida Insumo
+    nuevoLote:                  Nuevo Lote
+    fechaEntradaProduccion:     Fecha Entrada Produccion
+    fechaSalidaEstipulada:      Fecha Salida Estipulada
+    fechaSalidaReal:            Fecha Salida Real
+    editarRaza:                 Editar Raza
+    editarRazonSalida:          Editar Razon Salida
+    nuevoSalidaInsumoDetalle:   Nuevo Salida Insumo Detalle
+    generar:                    Generar
+#------------------- FIN DE ALEYDA MINA --------------------------------------------
+
+#--------------------- JHON -------------------------
+
+    nombre:                 Nombre
+    noExistenDatos:         No Existen Datos
+    observaciones:          Observaciones
+    acciones:               Acciones
+    nuevo:                  Nuevo
+    eliminar:               Eliminar
+    filtros:                Filtros
+    EditarTipodeInsumo:     Editar Tipo de Insumo
+    EditarTipodeReparacion: Editar Tipo de Reparacion
+    EditarTransportador:    Editar Transportador
+    resetear:               Resetear
+    
+#------------------- FIN DE JHON --------------------------------------------
+
+    EditarTipoDesinfeccion: Editar Tipo Desinfeccion
   errors:
     00001:                El módulo y la acción solicitada, no existe.
     00002:                La dirección que solicita no está registrada.

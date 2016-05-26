@@ -18,7 +18,7 @@ namespace mvc\interfaces {
 
     public function validateRouting($routing);
 
-    public function registerModuleAndAction();
+    public function registerModuleAndAction($module = null, $action = null);
   }
 
 }

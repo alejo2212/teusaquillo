@@ -10,18 +10,19 @@ use mvc\model\table\tableBaseClass;
 class maquinaBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
-  const FECHA_IONGRESO = 'fecha_ingreso';
-  const DIRECCION = 'direccion';
-  const DIRECCION_LENGTE = 1024;
+  const CLASIFICACION_MAQUINA_ID = 'clasificacion_maquina_id';
+  const FECHA_INGRESO = 'fecha_ingreso';
+  const DESCRIPCION = 'descripcion';
+  const DESCRIPCION_LENGTH = 1024;
   const CODIGO = 'codigo';
-  const CODIGO_LENGTE = 20;
+  const CODIGO_LENGTH = 20;
   const REFERENCIA = 'referencia';
-  const REFERENCIA_LENGTE = 100;
+  const REFERENCIA_LENGTH = 100;
   const FECHA_MANTENIMIENTO = 'fecha_mantenimiento';
   const INTERVALO_MANTENIMIENTO = 'intervalo_mantenimiento';
   const ACTIVADO = 'activado';
   const VALOR = 'valor';
-  const DELATED_AT = 'delete_at';
+  const DELETED_AT = 'deleted_at';
 
   /**
    * Obtiene el nombre de la tabla
@@ -55,7 +56,7 @@ class maquinaBaseTableClass extends tableBaseClass {
    * @return \PDOException|boolean
    */
   public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+    return parent::delete($ids, $deletedLogical, self::getNameTable());
   }
 
   /**
@@ -87,8 +88,8 @@ class maquinaBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where=null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

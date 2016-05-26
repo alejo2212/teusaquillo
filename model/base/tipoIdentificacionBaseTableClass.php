@@ -12,6 +12,8 @@ class tipoIdentificacionBaseTableClass extends tableBaseClass {
   const ID = 'id';
   const DESCRIPCION = 'descripcion';
   const DESCRIPCION_LENGTH = 50;
+  const ABREVIATURA = 'abreviatura';
+  const ABREVIATURA_LENGTH = 5;
   const DELETED_AT = 'deleted_at';
 
   static public function getNameTable() {
@@ -42,7 +44,7 @@ class tipoIdentificacionBaseTableClass extends tableBaseClass {
    * @return \PDOException|boolean
    */
   public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+    return parent::delete($ids, $deletedLogical, self::getNameTable());
   }
 
   /**
@@ -74,8 +76,8 @@ class tipoIdentificacionBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where=null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

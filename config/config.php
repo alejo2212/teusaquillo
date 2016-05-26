@@ -1,6 +1,9 @@
 <?php
 
 use mvc\config\configClass;
+//||
+configClass::setRowGrid(10);
+configClass::setTimeMinAfterProduc(365);
 
 configClass::setDbHost('127.0.0.1');
 configClass::setDbDriver('pgsql'); // mysql
@@ -36,7 +39,10 @@ configClass::setCookieNameRememberMe('mvcSiteRememberMe');
 configClass::setCookieNameSite('mvcSite');
 configClass::setCookiePath('/teusaquillo/web/' . configClass::getIndexFile());
 configClass::setCookieDomain('http://127.0.0.1');
-configClass::setCookieTime(3600); // una hora en segundo
+configClass::setCookieTime(3600 * 8); // una hora en segundo
 
-// configClass::setDefaultModuleSecurity('default');
-// configClass::setDefaultActionSecurity('index');
+configClass::setDefaultModule('default');
+configClass::setDefaultAction('index');
+
+configClass::setDefaultModuleSecurity('shfSecurity');
+configClass::setDefaultActionSecurity('index');

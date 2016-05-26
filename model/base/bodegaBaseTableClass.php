@@ -12,7 +12,7 @@ class bodegaBaseTableClass extends tableBaseClass {
   const ID = 'id';
   const LOTE_ID = 'lote_id';
   const BODEGA_CLASIFICACION_ID = 'bodega_clasificacion_id';
-  const INSUMO_ID = 'bodega_clasificacion_id';
+  const INSUMO_ID = 'insumo_id';
   const ENTRADA_BODEGA_ID = 'entrada_bodega_id';
   const FECHA_VENCIMIENTO = 'fecha_vencimiento';
   const CANTIDAD = 'cantidad';
@@ -51,7 +51,7 @@ class bodegaBaseTableClass extends tableBaseClass {
    * @return \PDOException|boolean
    */
   public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+    return parent::delete($ids, $deletedLogical,self::getNameTable());
   }
 
   /**
@@ -83,8 +83,8 @@ class bodegaBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where= null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

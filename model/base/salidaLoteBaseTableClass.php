@@ -10,8 +10,9 @@ use mvc\model\table\tableBaseClass;
 class salidaLoteBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
-  const AMBIENTE_HISTORIAL_LOTE = 'ambiente_historial_lote';
-  const RAZON_SALIDA = 'razon_salida';
+  const FECHA_REALI = 'fecha_realizacion';
+  const AMBIENTE_HISTORIAL_LOTE_ID = 'ambiente_historial_lote_id';
+  const RAZON_SALIDA_ID = 'razon_salida_id';
   const CANTIDAD_TOTAL = 'cantidad_total';
   const CANTIDAD_MACHOS = 'cantidad_machos';
   const CANTIDAD_HEMBRAS = 'cantidad_hembras';
@@ -50,7 +51,7 @@ class salidaLoteBaseTableClass extends tableBaseClass {
    * @return \PDOException|boolean
    */
   public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+    return parent::delete( $ids, $deletedLogical,self::getNameTable());
   }
 
   /**
@@ -82,8 +83,8 @@ class salidaLoteBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where= null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

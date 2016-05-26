@@ -1,12 +1,14 @@
 <?php use mvc\i18n\i18nClass ?>
+<?php use mvc\session\sessionClass as session ?>
 <?php $id = usuarioTableClass::ID ?>
 <?php $nombreUsuario = usuarioTableClass::USER ?>
 <?php $activado = usuarioTableClass::ACTIVED ?>
+<?php $usuarioForm = session::getInstance()->getFlash('usuario') ?>
 <form class="form-horizontal" role="form" action="<?php echo \mvc\routing\routingClass::getInstance()->getUrlWeb('security', (isset($edit) === true and $edit === true) ? 'update' : 'create') ?>" method="post">
   <div class="form-group">
     <label for="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>" class="col-sm-2 control-label">Usuario</label>
     <div class="col-sm-10">
-      <input type="text" class="form-control" id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>" required value="<?php echo (isset($edit) and $edit) ? $usuario->$nombreUsuario : '' ?>">
+      <input type="text" class="form-control" id="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>" name="<?php echo usuarioTableClass::getNameField(usuarioTableClass::USER, true) ?>" required value="<?php echo (isset($edit) and $edit) ? $usuario->$nombreUsuario : ((isset($usuarioForm[$nombreUsuario])) ? $usuarioForm[$nombreUsuario] : '') ?>">
     </div>
   </div>
   <div class="form-group">

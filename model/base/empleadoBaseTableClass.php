@@ -10,6 +10,7 @@ use mvc\model\table\tableBaseClass;
 class empleadoBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
+  const FEHCA_INGRESO = 'fecha_ingreso';
   const TIPO_ID = 'tipo_identificacion_id';
   const DOCUMENTO = 'documento';
   const GENERO = 'genero';
@@ -27,6 +28,7 @@ class empleadoBaseTableClass extends tableBaseClass {
   const LOCALIZACION_ID = 'localizacion_id';
   const ACTIVO = 'activo';
   const USUARIO_ID = 'usuario_id';
+  const FOTO = 'foto';
   const DELETED_AT = 'deleted_at';
 
   static public function getNameTable() {
@@ -57,7 +59,7 @@ class empleadoBaseTableClass extends tableBaseClass {
    * @return \PDOException|boolean
    */
   public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+    return parent::delete($ids, $deletedLogical, self::getNameTable());
   }
 
   /**
@@ -89,8 +91,8 @@ class empleadoBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where=null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

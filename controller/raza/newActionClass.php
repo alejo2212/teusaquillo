@@ -11,11 +11,15 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of newActionClass
  *
- * @author Jhonny Alejandro Diaz <Jhonny2212@hotmail.com>
+  * @author Aleyda Mina Caicedo <aleminac@gmail.com>
  */
 class newActionClass extends controllerClass implements controllerActionInterface {
 
   public function execute() {
+      if (session::getInstance()->hasAttribute('form')) {
+            $raza = session::getInstance()->getAttribute('form');
+            session::getInstance()->setFlash('raza', $raza);
+        }
     $this->defineView('new', 'raza', session::getInstance()->getFormatOutput());
   }
 

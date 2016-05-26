@@ -16,10 +16,13 @@ namespace mvc\config {
     private static $db_name;
     private static $db_user;
     private static $db_password;
+    private static $db_unix_socket;
     private static $scope;
     private static $path_absolute;
     private static $url_base;
     private static $index_file;
+    private static $default_module;
+    private static $default_action;
     private static $default_module_security;
     private static $default_action_security;
     private static $default_culture;
@@ -37,6 +40,7 @@ namespace mvc\config {
     private static $cookie_domain;
     private static $cookie_time;
     private static $row_grid;
+    private static $time_min_after_produc;
 
     /**
      * Obtiene la URL base del sistema
@@ -50,7 +54,7 @@ namespace mvc\config {
     /**
      * Configuro la URL base del sistema
      * Ejemplo: http://localhost/MVC/web/
-     * 
+     *
      * @param string $url_base
      */
     public static function setUrlBase($url_base) {
@@ -389,6 +393,46 @@ namespace mvc\config {
      */
     public static function setCookiePath($cookie_path) {
       self::$cookie_path = $cookie_path;
+    }
+
+    public static function setRowGrid($row_grid) {
+      self::$row_grid = $row_grid;
+    }
+
+    public static function getRowGrid() {
+      return self::$row_grid;
+    }
+
+    public static function getDefaultModule() {
+      return self::$default_module;
+    }
+
+    public static function getDefaultAction() {
+      return self::$default_action;
+    }
+
+    public static function setDefaultModule($default_module) {
+      self::$default_module = $default_module;
+    }
+
+    public static function setDefaultAction($default_action) {
+      self::$default_action = $default_action;
+    }
+
+    public static function getDbUnixSocket() {
+      return self::$db_unix_socket;
+    }
+
+    public static function setDbUnixSocket($db_unix_socket) {
+      self::$db_unix_socket = $db_unix_socket;
+    }
+    
+    public static function getTimeMinAfterProduc() {
+        return self::$time_min_after_produc;
+    }
+
+    public static function setTimeMinAfterProduc($time_min_after_produc) {
+        self::$time_min_after_produc = $time_min_after_produc;
     }
 
   }

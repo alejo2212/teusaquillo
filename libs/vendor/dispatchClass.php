@@ -17,16 +17,16 @@ namespace mvc\dispatch {
   class dispatchClass {
 
     private static $instance;
-    
+
     public function __construct() {
-      
+
       if (!sessionClass::getInstance()->hasFirstCall()) {
         sessionClass::getInstance()->setFirstCall(true);
       }
     }
 
     /**
-     * 
+     *
      * @return dispatchClass
      */
     public static function getInstance() {
@@ -36,16 +36,21 @@ namespace mvc\dispatch {
       return self::$instance;
     }
 
-    public function main() {
+    public function main($module = null, $action = null) {
       try {
         i18nClass::setCulture(configClass::getDefaultCulture());
-        routingClass::getInstance()->registerModuleAndAction();
+        routingClass::getInstance()->registerModuleAndAction($module, $action);
         autoLoadClass::getInstance()->loadIncludes();
-        //hookClass::hooksIni();
-        $this->loadModuleAndAction();
-        //hookClass::hooksEnd();
+        hookClass::hooksIni();
+        $controller = $this->loadModuleAndAction();
+        hookClass::hooksEnd();
+        $controller->renderView();
       } catch (\Exception $exc) {
         echo $exc->getMessage();
+        echo '<br>';
+        echo '<pre>';
+        print_r($exc->getTrace());
+        echo '</pre>';
       }
     }
 
@@ -58,11 +63,17 @@ namespace mvc\dispatch {
       return new $controllerFile();
     }
 
+    /**
+     * 
+     * @return \mvc\controller\controllerClass
+     * @throws \Exception
+     */
     private function loadModuleAndAction() {
       $controllerFolder = sessionClass::getInstance()->getModule();
       $controllerFile = $controllerFolder . 'Class';
       $action = sessionClass::getInstance()->getAction() . 'Action';
       $controllerFileAction = sessionClass::getInstance()->getAction() . 'ActionClass';
+      $controller = false;
       if ($this->checkFile($controllerFolder, $controllerFile)) {
         $controller = $this->includeFileAndInitialize($controllerFolder, $controllerFile);
         if (method_exists($controller, $action) === true) {
@@ -79,6 +90,7 @@ namespace mvc\dispatch {
       } else {
         throw new \Exception(i18nClass::__(00001, null, 'errors'), 00001);
       }
+      return $controller;
     }
 
     private function executeAction($controller, $action) {

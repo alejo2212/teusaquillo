@@ -10,21 +10,25 @@ use mvc\model\table\tableBaseClass;
  */
 class salidaincubadoraBaseTableClass extends tableBaseClass {
 
+  const ID = 'id';
+  const ID_ANUAL = 'id_anual';
   const INCUBADORA_ID = 'incubadora_id';
-  const CANTIDAD = "cantidad";
+  const CANTIDAD = 'cantidad';
   const FECHA = 'fecha';
-  const Nº_PEDIDO = "nº_pedido";
-  const FECHA_LLEGADA = 'fecha_salida';
-  const FECHA_SALIDAD = "fecha_salida";
-  const EMPLEADO_ID = "empleado_id";
-  const DELETE = "delete";
+  const NO_PEDIDO = 'no_pedido';
+  const FECHA_LLEGADA = 'fecha_llegada';
+  const FECHA_SALIDAD = 'fecha_salida';
+  const EMPLEADO_ID = 'empleado_id';
+  const OBSERVACION = 'observacion';
+  const OBSERVACION_LENGTH = 1024;
+  const DELETED_AT = 'deleted_at';
 
   /**
    * Obtiene el nombre de la tabla
    * @return string
    */
   static public function getNameTable() {
-    return 'salidaincubadora';
+    return 'salida_incubadora';
   }
 
   /**
@@ -51,7 +55,7 @@ class salidaincubadoraBaseTableClass extends tableBaseClass {
    * @return \PDOException|boolean
    */
   public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+    return parent::delete($ids, $deletedLogical, self::getNameTable());
   }
 
   /**
@@ -83,8 +87,8 @@ class salidaincubadoraBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where=null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

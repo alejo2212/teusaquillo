@@ -1,0 +1,17 @@
+SELECT
+"public".bodega."id",
+"public".lote.lote,
+"public".bodega_clasificacion.nombre,
+"public".insumo.nombre,
+"public".bodega.cantidad,
+"public".bodega.activo
+FROM
+"public".bodega
+INNER JOIN "public".bodega_clasificacion ON "public".bodega.bodega_clasificacion_id = "public".bodega_clasificacion."id"
+INNER JOIN "public".insumo ON "public".bodega.insumo_id = "public".insumo."id"
+INNER JOIN "public".lote ON "public".bodega.lote_id = "public".lote."id"
+WHERE
+"public".bodega.deleted_at IS NULL AND
+"public".bodega_clasificacion.deleted_at IS NULL AND
+"public".insumo.deleted_at IS NULL AND
+"public".lote.deleted_at IS NULL

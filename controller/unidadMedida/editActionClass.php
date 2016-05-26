@@ -24,10 +24,29 @@ class editActionClass extends controllerClass implements controllerActionInterfa
       } else {
         routing::getInstance()->redirect('unidadMedida', 'index');
       }
-    } catch (PDOException $exc) {
-      session::getInstance()->setError($exc->getMessage());
-      routing::getInstance()->redirect('unidadMedida', 'index');
+   session::getInstance()->deleteAttribute('form');
+        } catch (PDOException $exc) {
+            switch ($exc->getCode()) {
+                case 23505:
+                    session::getInstance()->setError('La unidad de Medida que intenta registar ya existe en la base de datos');
+                    break;
+                case 00006:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                case 00007:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                case 00008:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                default:
+                    session::getInstance()->setError($exc->getMessage());
+                    break;
+            }
+            routing::getInstance()->redirect('unidadMedida', 'edit');
+            //routing::getInstance()->forward('security', 'new');
+        }
     }
-  }
 
 }
+

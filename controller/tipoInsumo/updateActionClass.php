@@ -11,7 +11,7 @@ use mvc\i18n\i18nClass as i18n;
 /**
  * Description of ejemploClass
  *
-@author jhon fernando hoyos diaz <aprendiz.jhonfernandohoyosdiaz@gmail.com> */
+  @author jhon fernando hoyos diaz <aprendiz.jhonfernandohoyosdiaz@gmail.com> */
 class updateActionClass extends controllerClass implements controllerActionInterface {
 
     public function execute() {
@@ -26,9 +26,11 @@ class updateActionClass extends controllerClass implements controllerActionInter
                     tipoInsumoTableClass::ID => $id
                 );
 
+                $this->Validations($nombre, $observacion);
+
                 $data = array(
                     tipoInsumoTableClass::NOMBRE => $nombre,
-                    tipoInsumoTableClass::OBSERVACION=> $observacion
+                    tipoInsumoTableClass::OBSERVACION => $observacion
                 );
                 tipoInsumoTableClass::update($ids, $data);
                 session::getInstance()->setSuccess('Actualización exitosa');
@@ -37,9 +39,46 @@ class updateActionClass extends controllerClass implements controllerActionInter
             } else {
                 routing::getInstance()->redirect('tipoInsumo', 'index');
             }
+            session::getInstance()->deleteAttribute('form');
         } catch (PDOException $exc) {
-            session::getInstance()->setError($exc->getMessage());
-            routing::getInstance()->redirect('tipoInsumo', 'index');
+            switch ($exc->getCode()) {
+                case 23505:
+                    session::getInstance()->setError('El Tipo de Insumo que intenta registar ya existe en la base de datos');
+                    break;
+                case 00006:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                case 00007:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                case 00008:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                default:
+                    session::getInstance()->setError($exc->getMessage());
+                    break;
+            }
+            routing::getInstance()->redirect('tipoInsumo', 'edit', array(tipoInsumoTableClass::ID => $id));
+            //routing::getInstance()->forward('security', 'new');
+        }
+    }
+
+    private function Validations($nombre, $observacion) {
+        if (strlen($nombre) > tipoInsumoTableClass::NOMBRE_LENGTH) {
+            throw new PDOException('El nombre  no pude ser mayor a ' . tipoInsumoTableClass::NOMBRE_LENGTH . ' caracteres', 00006);
+        }
+        if ($nombre === "") {
+            throw new PDOException('El campo Nombre no puede ir Vacio', 00007);
+            echo "entro";
+        }
+
+//        if (!ereg("^[A-Za-z_]*$", $nombre)) {
+//            throw new PDOException('no pueden llevar el Nombre campos numericos', 00008);
+//            echo "entro";
+//        }
+
+        if (strlen($observacion) > tipoInsumoTableClass::OBSERVACION_LENGTH) {
+            throw new PDOException('La observacion  no pude ser mayor a ' . tipoInsumoTableClass::OBSERVACION_LENGTH . ' caracteres', 00006);
         }
     }
 

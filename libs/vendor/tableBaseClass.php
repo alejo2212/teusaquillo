@@ -3,8 +3,9 @@
 namespace mvc\model\table {
 
   use mvc\interfaces\tableInterface;
-  use mvc\model\modelClass;
-  use mvc\config\configClass;
+  use mvc\model\modelClass as model;
+  use mvc\config\configClass as config;
+  use mvc\camelCase\camelCaseClass as camelCase;
 
   /**
    * Clase general para las tablas el cual define el CRUD
@@ -30,31 +31,38 @@ namespace mvc\model\table {
     public static function delete($fieldsAndValues, $deletedLogical = true, $table) {
       try {
 
-        if ($deletedLogical === true) {
+        if ($deletedLogical === false) {
           $sql = "DELETE FROM $table ";
+          $sqlID = "SELECT id FROM $table ";
 
           $flag = 0;
           foreach ($fieldsAndValues as $field => $value) {
             if ($flag === 0) {
               $sql = $sql . 'WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+              $sqlID = $sqlID . 'WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
               $flag++;
             } else {
               $sql = $sql . 'AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+              $sqlID = $sqlID . 'AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
             }
           }
 
-          modelClass::getInstance()->beginTransaction();
-          modelClass::getInstance()->exec($sql);
-          modelClass::getInstance()->commit();
+          $row = model::getInstance()->query($sqlID);
+          $answer = $row->fetch(\PDO::FETCH_OBJ);
+          $answer = (integer) $answer->id;
+
+          model::getInstance()->beginTransaction();
+          model::getInstance()->exec($sql);
+          model::getInstance()->commit();
         } else {
-          $data[$this->fieldDeleteAt] = date(configClass::getFormatTimestamp());
-          self::update($fieldsAndValues, $data, $table);
+          $data[self::$fieldDeleteAt] = date(config::getFormatTimestamp());
+          $answer = self::update($fieldsAndValues, $data, $table);
         }
 
-        return true;
+        return $answer;
       } catch (\PDOException $exc) {
         // en caso de haber un error entonces se devuelve todo y se deja como estaba
-        modelClass::getInstance()->rollback();
+        model::getInstance()->rollback();
         throw $exc;
       }
     }
@@ -99,8 +107,10 @@ namespace mvc\model\table {
         $line1 = '(';
         $line2 = 'VALUES (';
         foreach ($data as $field => $value) {
-          $line1 = $line1 . '"' . $field . '", ';
-          $line2 = $line2 . ((is_numeric($value) === true) ? $value : "'" . $value . "'") . ', ';
+          if ($field !== '__sequence') {
+            $line1 = ((config::getDbDriver() === 'mysql') ? $line1 . $field . ', ' : $line1 . '"' . $field . '", ' );
+            $line2 = $line2 . ((is_numeric($value) === true) ? $value : "'" . $value . "'") . ', ';
+          }
         }
 
         $newLeng = strlen($line1) - 2;
@@ -110,14 +120,19 @@ namespace mvc\model\table {
         $line2 = substr($line2, 0, $newLeng) . ')';
 
         $sql = $sql . $line1 . $line2;
-
-        modelClass::getInstance()->beginTransaction();
-        modelClass::getInstance()->exec($sql);
-        modelClass::getInstance()->commit();
-
-        return true;
+//        echo $sql;
+//        exit();
+        model::getInstance()->beginTransaction();
+        model::getInstance()->exec($sql);
+        model::getInstance()->commit();
+        if (isset($data['__sequence'])) {
+          $lastInsertId = model::getInstance()->lastInsertId($data['__sequence']);
+        } else {
+          $lastInsertId = model::getInstance()->lastInsertId();
+        }
+        return $lastInsertId;
       } catch (\PDOException $exc) {
-        modelClass::getInstance()->rollback();
+        model::getInstance()->rollback();
         throw $exc;
       }
     }
@@ -140,7 +155,7 @@ namespace mvc\model\table {
      * variables publica los nombres de las columnas de la consulta.
      * @throws \PDOException
      */
-    public static function getAll($table, $fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null) {
+    public static function getAll($table, $fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where = null) {
       try {
 
         $sql = 'SELECT ';
@@ -154,8 +169,36 @@ namespace mvc\model\table {
 
         $sql = $sql . ' FROM ' . $table;
 
+        $flag = false;
+
         if ($deletedLogical === true) {
           $sql = $sql . ' WHERE ' . $table . '.' . self::$fieldDeleteAt . ' IS NULL';
+          $flag = true;
+        }
+
+        if ($deletedLogical === false and is_array($where) === true) {
+          //$sql = $sql . ' WHERE ';
+          $flag = false;
+        }
+
+        if (is_array($where) === true) {
+          foreach ($where as $field => $value) {
+            if (is_array($value)) {
+              if ($flag === false) {
+                $sql = $sql . ' WHERE ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
+                $flag = true;
+              } else {
+                $sql = $sql . ' AND ' . $field . ' BETWEEN ' . ((is_numeric($value[0])) ? $value[0] : "'$value[0]'") . ' AND ' . ((is_numeric($value[1])) ? $value[1] : "'$value[1]'") . ' ';
+              }
+            } else {
+              if ($flag === false) {
+                $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+                $flag = true;
+              } else {
+                $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value)) ? $value : "'$value'") . ' ';
+              }
+            }
+          }
         }
 
         if ($orderBy !== null) {
@@ -169,15 +212,16 @@ namespace mvc\model\table {
           $sql = substr($sql, 0, $newLeng) . (($order !== null) ? " $order" : '');
         }
 
-        if ($limit !== null) {
+        if ($limit !== null and $offset === null) {
           $sql = $sql . ' LIMIT ' . $limit;
         }
 
         if ($limit !== null and $offset !== null) {
           $sql = $sql . ' LIMIT ' . $limit . ' OFFSET ' . $offset;
         }
-
-        return modelClass::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
+//        echo $sql;
+//        exit();
+        return model::getInstance()->query($sql)->fetchAll(\PDO::FETCH_OBJ);
       } catch (\PDOException $exc) {
         throw $exc;
       }
@@ -198,7 +242,8 @@ namespace mvc\model\table {
     public static function update($ids, $data, $table) {
       try {
 
-        $sql = "UPDATE " . $table . " SET ";
+        $sql = "UPDATE $table SET ";
+        $sqlID = "SELECT id FROM $table";
 
         foreach ($data as $key => $value) {
           $sql = $sql . " " . $key . " = '" . $value . "', ";
@@ -211,19 +256,24 @@ namespace mvc\model\table {
         foreach ($ids as $field => $value) {
           if ($flag === 0) {
             $sql = $sql . ' WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+            $sqlID = $sqlID . ' WHERE ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
           } else {
             $sql = $sql . ' AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
+            $sqlID = $sqlID . ' AND ' . $field . ' = ' . ((is_numeric($value) === true) ? $value : "'$value' " );
           }
           $flag++;
         }
 
-        modelClass::getInstance()->beginTransaction();
-        modelClass::getInstance()->exec($sql);
-        modelClass::getInstance()->commit();
+        model::getInstance()->beginTransaction();
+        model::getInstance()->exec($sql);
+        model::getInstance()->commit();
 
-        return true;
+        $row = model::getInstance()->query($sqlID);
+        $answer = $row->fetch(\PDO::FETCH_OBJ);
+
+        return (integer) $answer->id;
       } catch (\PDOException $exc) {
-        modelClass::getInstance()->rollback();
+        model::getInstance()->rollback();
         throw $exc;
       }
     }

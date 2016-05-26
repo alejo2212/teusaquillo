@@ -11,7 +11,7 @@ class requisiciondetalleBaseTableClass extends tableBaseClass {
 
   const ID = 'id';
   const REQUISICION_ID = 'requisicion_id';
-  const INSUMO_ID = 'insumo_id';
+  const BODEGA_ID = 'insumo_id';
   const CANTIDAD = 'cantidad';
   const FECHA_NECESIDAD = 'fecha_necesidad';
   const DELETED_AT = 'deleted_at';
@@ -44,7 +44,7 @@ class requisiciondetalleBaseTableClass extends tableBaseClass {
    * @return \PDOException|boolean
    */
   public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+    return parent::delete($ids, $deletedLogical, self::getNameTable());
   }
 
   /**
@@ -76,8 +76,8 @@ class requisiciondetalleBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where=null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

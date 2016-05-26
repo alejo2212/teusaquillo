@@ -8,13 +8,13 @@ use mvc\model\table\tableBaseClass;
  * @author Patricia Arteaga <aprendiz.patricia-819@hotmail.com>
  */
 class cajonCompostajeBaseTableClass extends tableBaseClass {
-
+  
   const ID = 'id';
   const NUMERO = 'numero';
-  const OBSERVACION = 'descripcion';
+  const OBSERVACION= 'observacion';
   const OBSERVACION_LENGTH = 1024;
-  const DELETED_AT = 'deleted_at';
-
+  const DELETED_AT= 'deleted_at';
+  
   /**
    * Obtiene el nombre de la tabla
    * @return string
@@ -32,7 +32,7 @@ class cajonCompostajeBaseTableClass extends tableBaseClass {
    * versión DB
    * @return string
    */
-  public static function getNameField($field, $html = false, $table = null) {
+  public static function getNameField($field, $html = false, $table = NULL) {
     return parent::getNameField($field, self::getNameTable(), $html);
   }
 
@@ -46,8 +46,8 @@ class cajonCompostajeBaseTableClass extends tableBaseClass {
    * borrado físico [por defecto] de un registro en una tabla de la base de datos
    * @return \PDOException|boolean
    */
-  public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+   public static function delete($ids, $deletedLogical = false, $table = null) {
+    return parent::delete($ids, $deletedLogical,self::getNameTable() );
   }
 
   /**
@@ -58,7 +58,7 @@ class cajonCompostajeBaseTableClass extends tableBaseClass {
    * $data['nombre'] = 'Erika'; $data['apellido'] = 'Galindo';
    * @return \PDOException|boolean
    */
-  public static function insert($data, $table = null) {
+  public static function insert($data, $table = NULL) {
     return parent::insert(self::getNameTable(), $data);
   }
 
@@ -79,8 +79,8 @@ class cajonCompostajeBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where = null, $table = NULL) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**
@@ -93,8 +93,7 @@ class cajonCompostajeBaseTableClass extends tableBaseClass {
    * datos a escribir
    * @return \PDOException|boolean
    */
-  public static function update($ids, $data, $table = null) {
+  public static function update($ids, $data, $table = NULL) {
     return parent::update($ids, $data, self::getNameTable());
   }
-
 }

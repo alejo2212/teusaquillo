@@ -1,6 +1,7 @@
 mvcBasicPackage:
-  - libs/FirePHPCore/FirePHP.class.php
-  - libs/FirePHPCore/fb.php
+  # - libs/FirePHPCore/FirePHP.class.php
+  # - libs/FirePHPCore/fb.php
+  - libs/fpdf/fpdf.php
   - libs/vendor/interfaces/controllerActionInterface.php
   - libs/vendor/interfaces/controllerInterface.php
   - libs/vendor/interfaces/hookInterface.php
@@ -10,6 +11,8 @@ mvcBasicPackage:
   - libs/vendor/interfaces/sessionInterface.php
   - libs/vendor/interfaces/tableInterface.php
   # - libs/vendor/autoLoadClass.php
+  # - libs/vendor/cacheManagerClass.php
+  # - libs/vendor/camelCaseClass.php
   # - libs/vendor/configClass.php
   - libs/vendor/controllerClass.php
   - libs/vendor/dispatchClass.php
@@ -20,5 +23,6 @@ mvcBasicPackage:
   - libs/vendor/routingClass.php
   - libs/vendor/sessionClass.php
   - libs/vendor/tableBaseClass.php
+  - libs/vendor/translatorClass.php
   - libs/vendor/viewClass.php
   # - libs/yaml/sfYaml.php

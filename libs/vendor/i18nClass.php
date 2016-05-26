@@ -4,6 +4,7 @@ namespace mvc\i18n {
 
   use mvc\interfaces\i18nInterface;
   use mvc\config\configClass;
+  use mvc\cache\cacheManagerClass;
 
   /**
    * Description of i18nClass
@@ -26,7 +27,7 @@ namespace mvc\i18n {
       if ($culture === null) {
         $culture = self::getCulture();
       }
-      $__ymlCulture = \sfYaml::load(configClass::getPathAbsolute() . 'i18n/' . $culture . '.yml');
+      $__ymlCulture = cacheManagerClass::getInstance()->loadYaml(configClass::getPathAbsolute() . 'i18n/' . $culture . '.yml', 'i18nYaml');
       $rsp = '';
       if (count($vars) > 0) {
         $keys = array_keys($vars);

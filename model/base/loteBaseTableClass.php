@@ -15,17 +15,16 @@ class loteBaseTableClass extends tableBaseClass {
   const FECHA_SALIDA_ESTIPULADA = 'fecha_salida_estipulada';
   const FECHA_SALIDA_REAL = 'fecha_salida_real';
   const RAZA_ID = 'raza_id';
-  const PESO_PROMEDIO_MACHO = 'peso_promedio_macho';
+  const PESO_PROMEDIO_MACHOS = 'peso_promedio_machos';
   const PESO_PROMEDIO_HEMBRAS = 'peso_promedio_hembras';
   const CANTIDAD_TOTAL = 'cantidad_total';
   const CANTIDAD_MACHOS = 'cantidad_machos';
   const CANTIDAD_HEMBRAS = 'cantidad_hembras';
-  const CANTIDAD_TOTAL = 'cantidad_total';
-  const FECHA_ENTRADA_PRODUCTO = 'fecha_entrada_producto';
+  const FECHA_ENTRA_PRODUCCION = 'fecha_entra_produccion';
   const OBSERVACION = 'observacion';
   const OBSERVACION_LENGTH = '1024';
   const EMPLEADO_ID = 'empleado_id';
-  const DELETED_AT = 'deleted_ad';
+  const DELETED_AT = 'deleted_at';
 
   /**
    * Obtiene el nombre de la tabla
@@ -59,7 +58,7 @@ class loteBaseTableClass extends tableBaseClass {
    * @return \PDOException|boolean
    */
   public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+    return parent::delete( $ids, $deletedLogical,self::getNameTable());
   }
 
   /**
@@ -91,8 +90,8 @@ class loteBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where = null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

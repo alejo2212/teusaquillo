@@ -25,7 +25,38 @@ class updateActionClass extends controllerClass implements controllerActionInter
                 $ids = array(
                     presentacionTableClass::ID => $id
                 );
+                
+                session::getInstance()->setAttribute('form', $post);
+                //        if (filter_var($nombre, FILTER_VALIDATE_INT)) {
+//          throw new PDOException('no pueden llevar el Nombre campos numericos', 00008);
+//          echo "entro";
+//        }
+                /**
+                 * VALIDACIONES
+                 */
+                // usuarioTableClass::USER_LENGTH
+                if (strlen($nombre) > presentacionTableClass::NOMBRE_LENGTH) {
+                    throw new PDOException('El nombre  no pude ser mayor a ' . presentacionTableClass::NOMBRE_LENGTH . ' caracteres', 00006);
+                }
+                if ($nombre === "") {
+                    throw new PDOException('El campo Nombre no puede ir Vacio', 00007);
+                    echo "entro";
+                }
 
+//                if (!ereg("^[A-Za-z_]*$", $nombre)) {
+//                    throw new PDOException('no pueden llevar el Nombre campos numericos', 00008);
+//                    echo "entro";
+//                }
+
+                if (strlen($observacion) > presentacionTableClass::OBSERVACION_LENGTH) {
+                    throw new PDOException('La observacion  no pude ser mayor a ' . presentacionTableClass::OBSERVACION_LENGTH . ' caracteres', 00006);
+                }
+                /* ------------- */
+
+
+                session::getInstance()->setAttribute(presentacionTableClass::getNameField(presentacionTableClass::NOMBRE, true), $nombre);
+
+                
                 $data = array(
                     presentacionTableClass::NOMBRE => $nombre,
                     presentacionTableClass::OBSERVACION=> $observacion
@@ -37,9 +68,27 @@ class updateActionClass extends controllerClass implements controllerActionInter
             } else {
                 routing::getInstance()->redirect('presentacion', 'index');
             }
+         session::getInstance()->deleteAttribute('form');
         } catch (PDOException $exc) {
-            session::getInstance()->setError($exc->getMessage());
-            routing::getInstance()->redirect('presentacion', 'index');
+            switch ($exc->getCode()) {
+                case 23505:
+                    session::getInstance()->setError('La Presentacion que intenta registar ya existe en la base de datos');
+                    break;
+                case 00006:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                case 00007:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                case 00008:
+                    session::getInstance()->setWarning($exc->getMessage());
+                    break;
+                default:
+                    session::getInstance()->setError($exc->getMessage());
+                    break;
+            }
+            routing::getInstance()->redirect('presentacion', 'edit', array(presentacionTableClass::ID => $id));
+            //routing::getInstance()->forward('security', 'new');
         }
     }
 

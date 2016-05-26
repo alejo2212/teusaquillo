@@ -10,6 +10,8 @@ namespace mvc\interfaces {
     
     public function hasRequest($param);
     
+    public function setMethod($method);
+
     public function isMethod($method);
 
     public function getPost($param);

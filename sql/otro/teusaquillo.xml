@@ -1,0 +1,2796 @@
+<?xml version="1.0" encoding="UTF-8"?><Db flnm="teusaquillo" nm="teusaquillo" ver="1.3.4">
+  <VerLbl/>
+  <VerNotes/>
+  <DefTblOpts/>
+  <DocFolder>C:\Users\Alejo\Documents\bd</DocFolder>
+  <Sch Cm="" nm="public">
+    <Tbl UsSo="1" nm="alistamiento_reparacion">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkalistamiento_reparacion"/>
+      <Cl au="1" df="nextval('alistamiento_reparacion_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="registro_alistamiento_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_reparacion_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_inicio" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_fin" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_alistamiento_reparacion_registro_alistamiento" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="registro_alistamiento" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="alistamiento_reparacion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="registro_alistamiento_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_alistamiento_reparacion_tipo_reparacion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="tipo_reparacion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="alistamiento_reparacion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="tipo_reparacion_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="ambiente">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkambiente"/>
+      <Cl au="1" df="nextval('ambiente_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_ambiente_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_ambiente_tipo_ambiente" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="tipo_ambiente" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="ambiente" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="tipo_ambiente_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="ambiente_historial_lote">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkambiente_historial_lote"/>
+      <Cl au="1" df="nextval('ambiente_historial_lote_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ambiente_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lote_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="no_caseta" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="cantidad_hembras" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="cantidad_machos" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_ambiente_historial_lote_ambiente" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="ambiente" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="ambiente_historial_lote" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ambiente_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_ambiente_historial_lote_lote" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="lote" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="ambiente_historial_lote" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="lote_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="ambiente_historial_lote_ambiente_id_lote_id_no_caseta_Idx" spa="0" unq="1">
+        <ClNs>ambiente_id, lote_id, no_caseta</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="ambiente_insumo">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkambiente_insumo"/>
+      <Cl au="1" df="nextval('ambiente_insumo_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ambiente_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salida_insumo_detalle_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_asignacion" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_retiro" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_ambiente_insumo_ambiente" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="ambiente" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="ambiente_insumo" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ambiente_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_ambiente_insumo_salida_insumo_detalle" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="salida_insumo_detalle" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="ambiente_insumo" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="salida_insumo_detalle_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bitacora">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkbitacora"/>
+      <Cl au="1" df="nextval('bitacora_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="accion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+        <Cm>Anular, Eliminar, Imprimir, Registrar, Modificar, entre otros</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="usuario_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="now()" nm="fecha" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tabla" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="registro" nu="1">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bitacora_usuario" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="usuario" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bitacora" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="usuario_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="bitacora_accion_Idx" spa="0" unq="0">
+        <ClNs>accion</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="bitacora_usuario_id_Idx" spa="0" unq="0">
+        <ClNs>usuario_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bodega">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkbodega"/>
+      <Cl au="1" df="nextval('bodega_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="entrada_bodega_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lote_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="bodega_clasificacion_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="insumo_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_vencimiento" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="t" nm="activo" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo o false = inactivo</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_bodega_bodega_clasificacion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="bodega_clasificacion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bodega" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="bodega_clasificacion_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bodega_entrada_bodega" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="entrada_bodega" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bodega" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="entrada_bodega_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bodega_insumo" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="insumo" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bodega" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="insumo_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_bodega_lote" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="lote" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="bodega" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="lote_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="bodega_clasificacion">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkbodega_clasificacion"/>
+      <Cl au="1" df="nextval('bodega_clasificacion_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="t" nm="activo" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="cajon_compostaje">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkcajon_compostaje"/>
+      <Cl au="1" df="nextval('cajon_compostaje_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="numero" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="cargo">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkcargo"/>
+      <Cl au="1" df="nextval('cargo_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="cargo_nombre_Idx" spa="0" unq="1">
+        <ClNs>nombre</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="clasificacion_maquina">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkclasificacion_maquina"/>
+      <Cl au="1" df="nextval('clasificacion_maquina_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="clasificacion_postura">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkclasificacion_postura"/>
+      <Cl au="1" df="nextval('clasificacion_postura_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="control_alimento">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkcontrol_alimento"/>
+      <Cl au="1" df="nextval('control_alimento_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ambiente_historial_lote_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salida_insumo_detalle_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_empleado" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sexo" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = machos | false = hembras</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="semana" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_control_alimento_ambiente_historial_lote" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="ambiente_historial_lote" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_alimento" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ambiente_historial_lote_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_alimento_empleado" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_alimento" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="id_empleado" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_alimento_salida_insumo_detalle" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="salida_insumo_detalle" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_alimento" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="salida_insumo_detalle_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="control_compostaje">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkcontrol_compostaje"/>
+      <Cl au="1" df="nextval('control_compostaje_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_administrador" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_veterinario" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_responsable" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_realizacion" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cajon_compostaje_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="gallinaza_utilizada" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+        <Cm>Cantidad de bultos utilizados</Cm>
+      </Cl>
+      <Cl au="0" df="0" nm="cantidad_total" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="cantidad_machos" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="cantidad_hembras" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salida_lote_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_control_compostaje_cajon_compostaje" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="cajon_compostaje" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_compostaje" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="cajon_compostaje_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_compostaje_empleado_administrador" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_compostaje" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_administrador" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_compostaje_empleado_responsable" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_compostaje" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_responsable" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_compostaje_empleado_veterinario" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_compostaje" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_veterinario" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_compostaje_salida_lote" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="salida_lote" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_compostaje" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="salida_lote_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="control_cucarron">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkcontrol_cucarron"/>
+      <Cl au="1" df="nextval('control_cucarron_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_administrador" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_veterinario" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_responsable" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_realizacion" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salida_insumo_detalle_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="solucion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+        <Cm>Cantidad del producto usado y en qué se disuelve</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="forma_aplicacion_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="area_tratada" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+        <Cm>Área tratada en metros cuadrados</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_control_cucarron_empleado_administrador" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_cucarron" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_administrador" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_cucarron_empleado_empleado" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_cucarron" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_responsable" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_cucarron_empleado_veterinario" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_cucarron" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_veterinario" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_cucarron_forma_aplicacion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="forma_aplicacion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_cucarron" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="forma_aplicacion_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_cucarron_salida_insumo_detalle" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="salida_insumo_detalle" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_cucarron" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="salida_insumo_detalle_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="control_roedores">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkcontrol_roedores"/>
+      <Cl au="1" df="nextval('control_roedores_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_administrador" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_veterinario" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_responsable" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_realizacion" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salida_insumo_detalle_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="pellets" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+        <Cm>Cantidad en gramos (gr)</Cm>
+      </Cl>
+      <Cl au="0" df="0" nm="bloques" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+        <Cm>Cantidad en gramos (gr)</Cm>
+      </Cl>
+      <Cl au="0" df="false" nm="evidencia_consumo" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = consumio | false = no consumio</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="lugar" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_control_roedores_empleado_administrador" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_roedores" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_administrador" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_roedores_empleado_responsable" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_roedores" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_responsable" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_roedores_empleado_veterinario" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_roedores" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_veterinario" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_control_roedores_salida_insumo_detalle" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="salida_insumo_detalle" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="control_roedores" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="salida_insumo_detalle_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="credencial">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkcredencial"/>
+      <Cl au="1" df="nextval('credencial_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="detalle_mantenimiento">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkdetalle_mantenimiento"/>
+      <Cl au="1" df="nextval('detalle_mantenimiento_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="mantenimiento_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="valor" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_detalle_mantenimiento_correctivo_mantenimiento_correctivo" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="mantenimiento" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="detalle_mantenimiento" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="mantenimiento_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="devolucion_incubadora">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkdevolucion_incubadora"/>
+      <Cl au="1" df="nextval('devolucion_incubadora_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salida_incubadora_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad_llegada" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad_faltante" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad_devolucion" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_devolucion_incubadora_empleado" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="devolucion_incubadora" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_devolucion_incubadora_salida_incubadora" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="salida_incubadora" oe="1" sch="public" zr="0"/>
+        <CdTb mn="0" nm="devolucion_incubadora" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="salida_incubadora_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="devolucion_incubadora_salida_incubadora_id_Idx" spa="0" unq="1">
+        <ClNs>salida_incubadora_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="empleado">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkempleado"/>
+      <Cl au="1" df="nextval('empleado_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_ingreso" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_identificacion_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="documento" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="genero" nu="0">
+        <DT arr="0" ds="Char" en="" id="1" ln="1" sc="null" sg="1" un="0"/>
+        <Cm>F = femenino y M = masculino</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="apellido" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="telefono" nu="0">
+        <DT arr="0" ds="BigInt" en="" id="-5" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="direccion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="correo" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cargo_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="localizacion_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="t" nm="activo" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo (trabajando) y false = inactivo</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="usuario_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_empleado_cargo" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="cargo" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="empleado" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="cargo_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_empleado_localizacion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="localizacion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="empleado" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="localizacion_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_empleado_tipo_identificacion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="tipo_identificacion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="empleado" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="tipo_identificacion_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_empleado_usuario" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="usuario" oe="1" sch="public" zr="0"/>
+        <CdTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="usuario_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="empleado_documento_Idx" spa="0" unq="1">
+        <ClNs>documento</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="empleado_id_cargo_Idx" spa="0" unq="0">
+        <ClNs>cargo_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="empleado_usuario_id_Idx" spa="0" unq="1">
+        <ClNs>usuario_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="entrada_bodega">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkentrada_bodega"/>
+      <Cl au="1" df="nextval('bodega_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="transportador_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_entrada" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="remision" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_entrada_bodega_empleado" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="entrada_bodega" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_entrada_bodega_transportador" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="transportador" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="entrada_bodega" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="transportador_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="entrada_bodega_remision_Idx" spa="0" unq="1">
+        <ClNs>remision</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="forma_aplicacion">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkforma_aplicacion"/>
+      <Cl au="1" df="nextval('forma_aplicacion_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="incubadora">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkincubadora"/>
+      <Cl au="1" df="nextval('incubadora_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="localizacion_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="direccion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_incubadora_localizacion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="localizacion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="incubadora" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="localizacion_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="insumo">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkinsumo"/>
+      <Cl au="1" df="nextval('insumo_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="t" nm="activo" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>TRUE = activado; FALSE = no activado</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="200" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_insumo_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="presentacion_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="unidad_medida_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="inventario_bodega" nu="0">
+        <DT arr="0" ds="Float" en="" id="6" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_insumo_presentacion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="presentacion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="insumo" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="presentacion_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_insumo_tipo_insumo" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="tipo_insumo" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="insumo" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="tipo_insumo_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_insumo_unidad_medida" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="unidad_medida" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="insumo" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="unidad_medida_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="localizacion">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pklocalizacion"/>
+      <Cl au="1" df="nextval('localizacion_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="localizacion_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_localizacion_localizacion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="localizacion" oe="1" sch="public" zr="1"/>
+        <CdTb mn="1" nm="localizacion" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="localizacion_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="lote">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pklote"/>
+      <Cl au="1" df="nextval('lote_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lote" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_entrada_granja" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>fecha de entrada  la granja</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_salida_estipulada" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_salida_real" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="raza_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="peso_promedio_machos" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="peso_promedio_hembras" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad_machos" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad_hembras" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad_total" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_entra_produccion" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Fecha de entrada a las ramadas</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_lote_empleado" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="lote" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_lote_raza" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="raza" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="lote" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="raza_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="lote_lote_Idx" spa="0" unq="1">
+        <ClNs>lote</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="mantenimiento">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkmantenimiento"/>
+      <Cl au="1" df="nextval('mantenimiento_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="maquina_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_mantenimiento_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_inicio" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_fin" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="causa" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="arreglo" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_mantenimiento_correctivo_empleado" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="mantenimiento" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_mantenimiento_correctivo_maquina" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="maquina" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="mantenimiento" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="maquina_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_mantenimiento_correctivo_tipo_mantenimiento" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="tipo_mantenimiento" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="mantenimiento" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="tipo_mantenimiento_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="maquina">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkmaquina"/>
+      <Cl au="1" df="nextval('maquina_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="clasificacion_maquina_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_ingreso" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="codigo" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="20" sc="null" sg="1" un="0"/>
+        <Cm>Número de chasis</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="referencia" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+        <Cm>Manejar los números de serie, modelo</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_mantenimiento" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>fecha del proximo mantenimiento</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="intervalo_mantenimiento" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+        <Cm>Número en días del intervalo de mantenimiento</Cm>
+      </Cl>
+      <Cl au="0" df="t" nm="activado" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = activo y false = desactivado</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="valor" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+        <Cm>Valor de la máquina</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_maquina_clasificacion_maquina" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="clasificacion_maquina" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="maquina" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="clasificacion_maquina_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="postura">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkpostura"/>
+      <Cl au="1" df="nextval('postura_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lote_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ambiente_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_postura_ambiente" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="ambiente" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="postura" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ambiente_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_postura_lote" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="lote" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="postura" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="lote_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="postura_detalle">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkpostura_detalle"/>
+      <Cl au="1" df="nextval('postura_detalle_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="postura_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="clasificacion_postura_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="ingreso_venta" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_postura_detalle_clasificacion_postura" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="clasificacion_postura" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="postura_detalle" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="clasificacion_postura_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_postura_detalle_empleado" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="postura_detalle" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_postura_detalle_postura" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="postura" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="postura_detalle" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="postura_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="postura_detalle_postura_id_clasificacion_postura_id_Idx" spa="0" unq="1">
+        <ClNs>postura_id, clasificacion_postura_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="presentacion">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkpresentacion"/>
+      <Cl au="1" df="nextval('presentacion_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="raza">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkraza"/>
+      <Cl au="1" df="nextval('raza_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="foto" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="razon_salida">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkrazon_salida"/>
+      <Cl au="1" df="nextval('razon_salida_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="razon" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="recordar_me">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkrecordar_me"/>
+      <Cl au="1" df="nextval('recordar_me_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usuario_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ip_address" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="hash md5 que identifica al usuario con su cookie" nm="hash_cookie" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="32" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="0" nm="fk_recordar_me_usuario" prLkCl="id" upAc="0">
+        <PrTb mn="0" nm="usuario" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="recordar_me" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="usuario_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="recordar_me_ip_address_hash_cookie_Idx" spa="0" unq="1">
+        <ClNs>ip_address, hash_cookie</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="recordar_me_usuario_id_Idx" spa="0" unq="0">
+        <ClNs>usuario_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="registro_alistamiento">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkregistro_alistamiento"/>
+      <Cl au="1" df="nextval('registro_alistamiento_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="1" nm="empleado_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salida_insumo_detalle_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="lote_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_inicio" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_fin" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_inicio_cortina" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_fin_cortina" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_entrada_cama" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_termino_cama" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_entrada_equipo" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Fecha de entrada de los equipos a la ramada despues de un matenimiento</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_registro_alistamiento_empleado" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="registro_alistamiento" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_registro_alistamiento_lote" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="lote" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="registro_alistamiento" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="lote_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_registro_alistamiento_salida_insumo_detalle" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="salida_insumo_detalle" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="registro_alistamiento" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="salida_insumo_detalle_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="registro_alistamiento_detalle_desinfeccion">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkregistro_alistamiento_detalle_desinfeccion"/>
+      <Cl au="1" df="nextval('registro_alistamiento_detalle_desinfeccion_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="registro_alistamiento_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="registro_desinfeccion_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_registro_alio_detalle_desinon_regiro_aliiento" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="registro_alistamiento" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="registro_alistamiento_detalle_desinfeccion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="registro_alistamiento_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_rero_alisto_de_feccion_rego_deccion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="registro_desinfeccion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="0" nm="registro_alistamiento_detalle_desinfeccion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="registro_desinfeccion_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="regisoo_detalle_eccion_registro_deon_id_Idx" spa="0" unq="1">
+        <ClNs>registro_desinfeccion_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="registro_desinfeccion">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkregistro_desinfeccion"/>
+      <Cl au="1" df="nextval('registro_desinfeccion_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_realizacion" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_terminado" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_responsable" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_verificador" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salida_insumo_detalle_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="solucion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+        <Cm>Cantidad usada de insumo y ¿en qué se ha disuelto?</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_desinfeccion_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="desinfeccion_bodega" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="desinfeccion_ramadas" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="25" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="desinfeccion_pediluvio" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad_pediluvio" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_registro_desinfeccion_empleado_responsable" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="registro_desinfeccion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_responsable" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_registro_desinfeccion_empleado_verificador" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="registro_desinfeccion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_verificador" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_registro_desinfeccion_salida_insumo_detalle" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="salida_insumo_detalle" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="registro_desinfeccion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="salida_insumo_detalle_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_registro_desinfeccion_tipo_desinfeccion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="tipo_desinfeccion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="registro_desinfeccion" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="tipo_desinfeccion_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="registro_desinfeccion_detalle">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkregistro_desinfeccion_detalle"/>
+      <Cl au="1" df="nextval('registro_desinfeccion_detalle_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="registro_desinfeccion_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ambiente_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_registro_desinfeccion_detalle_ambiente" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="ambiente" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="registro_desinfeccion_detalle" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ambiente_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_registro_desinfeccion_detalle_registro_desinfeccion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="registro_desinfeccion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="registro_desinfeccion_detalle" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="registro_desinfeccion_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="registro_desinf_detalle_ambfeccion_id_Idx" spa="0" unq="1">
+        <ClNs>ambiente_id, registro_desinfeccion_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="requisicion">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkrequisicion"/>
+      <Cl au="1" df="nextval('requisicion_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_realizacion" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="f" nm="anulado" nu="1">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = anulado o false = no anulado</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_requisicion_empleado" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="requisicion" oe="0" sch="public" zr="1"/>
+        <ClPr cdCl="empleado_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="requisicion_detalle">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkrequisicion_detalle"/>
+      <Cl au="1" df="nextval('requisicion_detalle_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="requisicion_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="insumo_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_necesidad" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>Para cuando necesita el insumo?</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_requisicion_detalle_insumo" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="insumo" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="requisicion_detalle" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="insumo_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_requisicion_detalle_requisicion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="requisicion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="requisicion_detalle" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="requisicion_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="salida_detalle_incubadora">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pksalida_detalle_incubadora"/>
+      <Cl au="1" df="nextval('salida_detalle_incubadora_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salida_incubadora_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="tipo_empaque_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="incubadora_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad_empaque" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_salida_detalle_incubadora_incubadora" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="incubadora" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_detalle_incubadora" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="incubadora_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_salida_detalle_salida_incubadora" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="salida_incubadora" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_detalle_incubadora" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="salida_incubadora_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_salida_detalle_tipo_empaque" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="tipo_empaque" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_detalle_incubadora" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="tipo_empaque_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="salida_dealle_incdora_salida_iubadora_id_Idx" spa="0" unq="0">
+        <ClNs>salida_incubadora_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="salida_detalle_incuora_tipo_aque_id_Idx" spa="0" unq="0">
+        <ClNs>tipo_empaque_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="salida_detalle_postura">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pksalida_detalle_postura"/>
+      <Cl au="1" df="nextval('salida_detalle_postura_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salida_detalle_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="postura_detalle_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_salida_detalle_postura_salida_detalle" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="salida_detalle_incubadora" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_detalle_postura" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="salida_detalle_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="salida_incubadora">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pksalida_incubadora"/>
+      <Cl au="1" df="nextval('salida_incubadora_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="id_anual" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="no_pedido" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_llegada" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>fecha de llegada del camión a la granja</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_salida" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>fecha de salida del camión de la granja</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_salida_incubadora_empleado" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_incubadora" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="salida_insumo">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pksalida_insumo"/>
+      <Cl au="1" df="nextval('salida_insumo_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_salida" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+        <Cm>Quien hace la salida</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id_recepcion" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+        <Cm>Quien recepciona el insumo</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="fecha" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="f" nm="anulado" nu="1">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = anulado o false = no anulado</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="requisicion_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="3" nm="fk_salida_insumo_empleado" prLkCl="id" upAc="3">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_insumo" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_salida" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_salida_insumo_empleado_2" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_insumo" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id_recepcion" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_salida_insumo_requisicion" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="requisicion" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_insumo" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="requisicion_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="salida_insumo_detalle">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pksalida_insumo_detalle"/>
+      <Cl au="1" df="nextval('salida_insumo_detalle_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="salida_insumo_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="bodega_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="insumo_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="f" nm="anulado" nu="1">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+        <Cm>true = anulado o false = no anulado</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_salida_insumo_detalle_bodega" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="bodega" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_insumo_detalle" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="bodega_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_salida_insumo_detalle_insumo" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="insumo" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_insumo_detalle" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="insumo_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_salida_insumo_detalle_salida_insumo" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="salida_insumo" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_insumo_detalle" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="salida_insumo_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="salida_lote">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pksalida_lote"/>
+      <Cl au="1" df="nextval('salida_lote_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="fecha_realizacion" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="ambiente_historial_lote_id" nu="1">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="razon_salida_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad_total" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="cantidad_machos" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="0" nm="cantidad_hembras" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="empleado_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+        <Cm>Persona quien tramita la salida</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="1" nm="fk_salida_lote_ambiente_historial_lote" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="ambiente_historial_lote" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_lote" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="ambiente_historial_lote_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_salida_lote_empleado" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="empleado" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_lote" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="empleado_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="1" nm="fk_salida_lote_razon_salida" prLkCl="id" upAc="1">
+        <PrTb mn="0" nm="razon_salida" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="salida_lote" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="razon_salida_id" prCl="id"/>
+      </Fk>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="tipo_ambiente">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pktipo_ambiente"/>
+      <Cl au="1" df="nextval('tipo_ambiente_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="tipo_desinfeccion">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pktipo_desinfeccion"/>
+      <Cl au="1" df="nextval('tipo_desinfeccion_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="tipo_empaque">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pktipo_empaque"/>
+      <Cl au="1" df="nextval('tipo_empaque_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="cantidad" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+        <Cm>Charolas 54 o Panales de 30</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+        <Cm>indicar &lt;&gt; entre nombre y descripcion</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="tipo_identificacion">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pktipo_identificacion"/>
+      <Cl au="1" df="nextval('tipo_identificacion_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="abreviatura" nu="1">
+        <DT arr="0" ds="Char" en="" id="1" ln="5" sc="null" sg="1" un="0"/>
+        <Cm>ejemplo(C.C, R.C, T.T)</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="tipo_identificacion_abreviatura_Idx" spa="0" unq="1">
+        <ClNs>abreviatura</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="tipo_identificacion_descripcion_Idx" spa="0" unq="1">
+        <ClNs>descripcion</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="tipo_insumo">
+      <Cm>Por ejemplo medicamento, alimento, material de construcción</Cm>
+      <TblOpts/>
+      <Pk ClNs="id" nm="pktipo_insumo"/>
+      <Cl au="1" df="nextval('tipo_insumo_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="tipo_mantenimiento">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pktipo_mantenimiento"/>
+      <Cl au="1" df="nextval('tipo_mantenimiento_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="descripcion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="tipo_reparacion">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pktipo_reparacion"/>
+      <Cl au="1" df="nextval('tipo_reparacion_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="transportador">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pktransportador"/>
+      <Cl au="1" df="nextval('transportador_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="100" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="placa_vehiculo" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="10" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="unidad_medida">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkunidad_medida"/>
+      <Cl au="1" df="nextval('unidad_medida_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="nombre" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="50" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="sigla" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="10" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="observacion" nu="1">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="1024" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="usuario">
+      <TblOpts>WITHOUT OIDS</TblOpts>
+      <Pk ClNs="id" nm="pkusuario"/>
+      <Cl au="1" df="nextval('usuario_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="user_name" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="80" sc="null" sg="1" un="0"/>
+        <Cm>Usuario del sistema</Cm>
+      </Cl>
+      <Cl au="0" df="" nm="password" nu="0">
+        <DT arr="0" ds="VarChar" en="" id="12" ln="32" sc="null" sg="1" un="0"/>
+        <Cm>Password encriptado en MD5</Cm>
+      </Cl>
+      <Cl au="0" df="t" nm="actived" nu="0">
+        <DT arr="0" ds="Boolean" en="" id="16" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="updated_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="deleted_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="last_login_at" nu="1">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Idx clu="0" ftx="0" nm="nm_user_user_Idx" spa="0" unq="1">
+        <ClNs>user_name</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="nm_user_user_password_Idx" spa="0" unq="0">
+        <ClNs>user_name, password</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="usuario_actived_Idx" spa="0" unq="0">
+        <ClNs>actived</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="usuario_user_password_actived_Idx" spa="0" unq="0">
+        <ClNs>user_name, password, actived</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Tbl UsSo="1" nm="usuario_credencial">
+      <TblOpts/>
+      <Pk ClNs="id" nm="pkusuario_credencial"/>
+      <Cl au="1" df="nextval('usuario_credencial_id_seq'::regclass)" nm="id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="usuario_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="credencial_id" nu="0">
+        <DT arr="0" ds="Integer" en="" id="4" ln="null" sc="null" sg="0" un="0"/>
+      </Cl>
+      <Cl au="0" df="" nm="created_at" nu="0">
+        <DT arr="0" ds="TimeStamp" en="" id="93" ln="null" sc="null" sg="1" un="0"/>
+      </Cl>
+      <Fk deAc="0" nm="fk_usuarios_credenciales_credenciales" prLkCl="id" upAc="0">
+        <PrTb mn="0" nm="credencial" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="usuario_credencial" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="credencial_id" prCl="id"/>
+      </Fk>
+      <Fk deAc="0" nm="fk_usuarios_credenciales_usuarios" prLkCl="id" upAc="0">
+        <PrTb mn="0" nm="usuario" oe="1" sch="public" zr="0"/>
+        <CdTb mn="1" nm="usuario_credencial" oe="1" sch="public" zr="0"/>
+        <ClPr cdCl="usuario_id" prCl="id"/>
+      </Fk>
+      <Idx clu="0" ftx="0" nm="usuario_credencial_credencial_id_Idx" spa="0" unq="0">
+        <ClNs>credencial_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="usuario_credencial_usuario_id_credencial_id_Idx" spa="0" unq="1">
+        <ClNs>usuario_id, credencial_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <Idx clu="0" ftx="0" nm="usuario_credencial_usuario_id_Idx" spa="0" unq="0">
+        <ClNs>usuario_id</ClNs>
+        <OptTx>USING btree</OptTx>
+      </Idx>
+      <UniqueConstraints/>
+      <SchTrHis/>
+    </Tbl>
+    <Seq incr="1" nm="alistamiento_reparacion_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="ambiente_historial_lote_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="ambiente_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="ambiente_insumo_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bitacora_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bodega_clasificacion_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="bodega_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="cajon_compostaje_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="cargo_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="clasificacion_maquina_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="clasificacion_postura_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="control_alimento_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="control_compostaje_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="control_cucarron_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="control_roedores_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="credencial_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="detalle_mantenimiento_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="devolucion_incubadora_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="empleado_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="entrada_bodega_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="forma_aplicacion_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="incubadora_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="insumo_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="localizacion_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="lote_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="mantenimiento_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="maquina_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="postura_detalle_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="postura_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="presentacion_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="raza_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="razon_salida_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="recordar_me_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="registro_alistamiento_detalle_desinfeccion_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="registro_alistamiento_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="registro_desinfeccion_detalle_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="registro_desinfeccion_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="requisicion_detalle_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="requisicion_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="salida_detalle_incubadora_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="salida_detalle_postura_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="salida_incubadora_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="salida_insumo_detalle_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="salida_insumo_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="salida_lote_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="tipo_ambiente_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="tipo_desinfeccion_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="tipo_empaque_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="tipo_identificacion_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="tipo_insumo_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="tipo_mantenimiento_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="tipo_reparacion_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="transportador_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="unidad_medida_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="usuario_credencial_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <Seq incr="1" nm="usuario_id_seq">
+      <Cm>DbWrench Autogenerated Sequence.</Cm>
+    </Seq>
+    <CustomTypes/>
+  </Sch>
+  <Dgm nm="diagramA">
+    <RnCf ClkAct="false" FtSz="10" lkStgy="OffsetDirect" zm="1.0">
+      <VbCfg>
+        <Fg ky="Auto Number" vl="0"/>
+        <Fg ky="Check" vl="0"/>
+        <Fg ky="Comment" vl="0"/>
+        <Fg ky="Data Type" vl="1"/>
+        <Fg ky="Default" vl="0"/>
+        <Fg ky="ENUM Values" vl="0"/>
+        <Fg ky="Length" vl="1"/>
+        <Fg ky="Name" vl="1"/>
+        <Fg ky="Nullable" vl="0"/>
+        <Fg ky="Schema Name" vl="0"/>
+        <Fg ky="Signed" vl="0"/>
+      </VbCfg>
+    </RnCf>
+    <DiaProps>
+      <Show AllCols="1" FkCols="1" FkNms="0" PkCols="1"/>
+      <ErNotation>DbwErNotation</ErNotation>
+      <DbTableRectangleFill>HeaderFooterFill</DbTableRectangleFill>
+      <svg path=""/>
+    </DiaProps>
+    <TbGl bkCl="ffff9999" sch="public" tbl="usuario" x="447" y="349"/>
+    <TbGl bkCl="ffff9999" sch="public" tbl="credencial" x="14" y="193"/>
+    <TbGl bkCl="ffff9999" sch="public" tbl="usuario_credencial" x="35" y="309"/>
+    <TbGl bkCl="ffff9999" sch="public" tbl="recordar_me" x="13" y="407"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="empleado" x="1310" y="517"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="cargo" x="1614" y="563"/>
+    <TbGl bkCl="ffffff99" sch="public" tbl="maquina" x="1599" y="19"/>
+    <TbGl bkCl="ffffff99" sch="public" tbl="tipo_mantenimiento" x="1458" y="218"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="tipo_identificacion" x="1527" y="355"/>
+    <TbGl bkCl="ffccccff" sch="public" tbl="localizacion" x="1285" y="368"/>
+    <TbGl bkCl="ffffff99" sch="public" tbl="mantenimiento" x="1741" y="204"/>
+    <TbGl bkCl="ffffff99" sch="public" tbl="detalle_mantenimiento" x="2049" y="90"/>
+    <TbGl bkCl="ff000000" sch="public" tbl="bodega" x="2000" y="421"/>
+    <TbGl bkCl="ff0000ff" sch="public" tbl="unidad_medida" x="2375" y="461"/>
+    <TbGl bkCl="ff0000ff" sch="public" tbl="presentacion" x="2666" y="466"/>
+    <TbGl bkCl="ff0000ff" sch="public" tbl="tipo_insumo" x="2412" y="107"/>
+    <TbGl bkCl="ff000000" sch="public" tbl="transportador" x="2091" y="213"/>
+    <TbGl bkCl="ffff9900" sch="public" tbl="salida_insumo" x="1678" y="735"/>
+    <TbGl bkCl="ffff9900" sch="public" tbl="salida_insumo_detalle" x="701" y="1268"/>
+    <TbGl bkCl="ffff9900" sch="public" tbl="lote" x="2170" y="623"/>
+    <TbGl bkCl="ffff9900" sch="public" tbl="raza" x="2509" y="608"/>
+    <TbGl bkCl="ffff9900" sch="public" tbl="razon_salida" x="2518" y="727"/>
+    <TbGl bkCl="ffff9900" sch="public" tbl="salida_lote" x="2364" y="868"/>
+    <TbGl bkCl="ff0000ff" sch="public" tbl="requisicion" x="1577" y="917"/>
+    <TbGl bkCl="ff0000ff" sch="public" tbl="requisicion_detalle" x="2011" y="891"/>
+    <TbGl bkCl="ffff00ff" sch="public" tbl="control_cucarron" x="1478" y="1023"/>
+    <TbGl bkCl="ffff00ff" sch="public" tbl="forma_aplicacion" x="1860" y="1073"/>
+    <TbGl bkCl="ffff00ff" sch="public" tbl="control_roedores" x="1178" y="1237"/>
+    <TbGl bkCl="ffff00ff" sch="public" tbl="control_compostaje" x="1538" y="1219"/>
+    <TbGl bkCl="ffff00ff" sch="public" tbl="cajon_compostaje" x="1930" y="1291"/>
+    <TbGl bkCl="ffff9900" sch="public" tbl="ambiente" x="588" y="645"/>
+    <TbGl bkCl="ffff9900" sch="public" tbl="tipo_ambiente" x="638" y="492"/>
+    <TbGl bkCl="ffff00ff" sch="public" tbl="registro_desinfeccion" x="1049" y="905"/>
+    <TbGl bkCl="ff33ff33" sch="public" tbl="registro_desinfeccion_detalle" x="621" y="942"/>
+    <TbGl bkCl="ffff66ff" sch="public" tbl="postura" x="900" y="360"/>
+    <TbGl bkCl="ff000000" sch="public" tbl="ambiente_historial_lote" x="956" y="596"/>
+    <TbGl bkCl="ff0000ff" sch="public" tbl="control_alimento" x="951" y="753"/>
+    <TbGl bkCl="ffff00ff" sch="public" tbl="tipo_desinfeccion" x="751" y="1037"/>
+    <TbGl bkCl="ffff9900" sch="public" tbl="ambiente_insumo" x="321" y="517"/>
+    <TbGl bkCl="ffff9900" sch="public" tbl="registro_alistamiento" x="86" y="656"/>
+    <TbGl bkCl="ff33ff33" sch="public" tbl="registro_alistamiento_detalle_desinfeccion" x="436" y="828"/>
+    <TbGl bkCl="ff000000" sch="public" tbl="tipo_reparacion" x="48" y="873"/>
+    <TbGl bkCl="ff000000" sch="public" tbl="alistamiento_reparacion" x="171" y="981"/>
+    <TbGl bkCl="ffff66ff" sch="public" tbl="clasificacion_postura" x="1065" y="114"/>
+    <TbGl bkCl="ffff66ff" sch="public" tbl="salida_incubadora" x="741" y="11"/>
+    <TbGl bkCl="ffff66ff" sch="public" tbl="incubadora" x="734" y="207"/>
+    <TbGl bkCl="ffff66ff" sch="public" tbl="devolucion_incubadora" x="1320" y="38"/>
+    <TbGl bkCl="ffff66ff" sch="public" tbl="salida_detalle_incubadora" x="398" y="40"/>
+    <TbGl bkCl="ffff66ff" sch="public" tbl="tipo_empaque" x="130" y="86"/>
+    <TbGl bkCl="ffff65ff" sch="public" tbl="salida_detalle_postura" x="410" y="222"/>
+    <TbGl bkCl="ffff9999" sch="public" tbl="bitacora" x="8" y="514"/>
+    <TbGl bkCl="ff000000" sch="public" tbl="entrada_bodega" x="1694" y="446"/>
+    <TbGl bkCl="ff0000ff" sch="public" tbl="insumo" x="2409" y="264"/>
+    <TbGl bkCl="ff000000" sch="public" tbl="bodega_clasificacion" x="2156" y="313"/>
+    <TbGl bkCl="ffffff99" sch="public" tbl="clasificacion_maquina" x="1956" y="6"/>
+    <TbGl bkCl="ffff99ff" sch="public" tbl="postura_detalle" x="1093" y="230"/>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.alistamiento_reparacion.fk_alistamiento_reparacion_registro_alistamiento" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.alistamiento_reparacion.fk_alistamiento_reparacion_tipo_reparacion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.ambiente.fk_ambiente_tipo_ambiente" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.ambiente_historial_lote.fk_ambiente_historial_lote_ambiente" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.ambiente_historial_lote.fk_ambiente_historial_lote_lote" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.ambiente_insumo.fk_ambiente_insumo_ambiente" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.ambiente_insumo.fk_ambiente_insumo_salida_insumo_detalle" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bitacora.fk_bitacora_usuario" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bodega.fk_bodega_bodega_clasificacion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bodega.fk_bodega_entrada_bodega" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bodega.fk_bodega_insumo" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.bodega.fk_bodega_lote" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_alimento.fk_control_alimento_ambiente_historial_lote" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_alimento.fk_control_alimento_empleado" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_alimento.fk_control_alimento_salida_insumo_detalle" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_compostaje.fk_control_compostaje_cajon_compostaje" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_compostaje.fk_control_compostaje_empleado_administrador" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_compostaje.fk_control_compostaje_empleado_responsable" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_compostaje.fk_control_compostaje_empleado_veterinario" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_compostaje.fk_control_compostaje_salida_lote" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_cucarron.fk_control_cucarron_empleado_administrador" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_cucarron.fk_control_cucarron_empleado_empleado" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_cucarron.fk_control_cucarron_empleado_veterinario" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_cucarron.fk_control_cucarron_forma_aplicacion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_cucarron.fk_control_cucarron_salida_insumo_detalle" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_roedores.fk_control_roedores_empleado_administrador" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_roedores.fk_control_roedores_empleado_responsable" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_roedores.fk_control_roedores_empleado_veterinario" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.control_roedores.fk_control_roedores_salida_insumo_detalle" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.detalle_mantenimiento.fk_detalle_mantenimiento_correctivo_mantenimiento_correctivo" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.devolucion_incubadora.fk_devolucion_incubadora_empleado" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.devolucion_incubadora.fk_devolucion_incubadora_salida_incubadora" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.empleado.fk_empleado_cargo" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.empleado.fk_empleado_localizacion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.empleado.fk_empleado_tipo_identificacion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.empleado.fk_empleado_usuario" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.entrada_bodega.fk_entrada_bodega_empleado" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.entrada_bodega.fk_entrada_bodega_transportador" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.incubadora.fk_incubadora_localizacion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.insumo.fk_insumo_presentacion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.insumo.fk_insumo_tipo_insumo" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.insumo.fk_insumo_unidad_medida" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.localizacion.fk_localizacion_localizacion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.lote.fk_lote_empleado" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.lote.fk_lote_raza" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.mantenimiento.fk_mantenimiento_correctivo_empleado" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.mantenimiento.fk_mantenimiento_correctivo_maquina" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.mantenimiento.fk_mantenimiento_correctivo_tipo_mantenimiento" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.maquina.fk_maquina_clasificacion_maquina" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.postura.fk_postura_ambiente" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.postura.fk_postura_lote" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.postura_detalle.fk_postura_detalle_clasificacion_postura" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.postura_detalle.fk_postura_detalle_empleado" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.postura_detalle.fk_postura_detalle_postura" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.recordar_me.fk_recordar_me_usuario" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.registro_alistamiento.fk_registro_alistamiento_empleado" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.registro_alistamiento.fk_registro_alistamiento_lote" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.registro_alistamiento.fk_registro_alistamiento_salida_insumo_detalle" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.registro_alistamiento_detalle_desinfeccion.fk_registro_alio_detalle_desinon_regiro_aliiento" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.registro_alistamiento_detalle_desinfeccion.fk_rero_alisto_de_feccion_rego_deccion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.registro_desinfeccion.fk_registro_desinfeccion_empleado_responsable" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.registro_desinfeccion.fk_registro_desinfeccion_empleado_verificador" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.registro_desinfeccion.fk_registro_desinfeccion_salida_insumo_detalle" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.registro_desinfeccion.fk_registro_desinfeccion_tipo_desinfeccion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.registro_desinfeccion_detalle.fk_registro_desinfeccion_detalle_ambiente" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.registro_desinfeccion_detalle.fk_registro_desinfeccion_detalle_registro_desinfeccion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.requisicion.fk_requisicion_empleado" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.requisicion_detalle.fk_requisicion_detalle_insumo" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.requisicion_detalle.fk_requisicion_detalle_requisicion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_detalle_incubadora.fk_salida_detalle_incubadora_incubadora" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_detalle_incubadora.fk_salida_detalle_salida_incubadora" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_detalle_incubadora.fk_salida_detalle_tipo_empaque" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_detalle_postura.fk_salida_detalle_postura_salida_detalle" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_incubadora.fk_salida_incubadora_empleado" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_insumo.fk_salida_insumo_empleado" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_insumo.fk_salida_insumo_empleado_2" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_insumo.fk_salida_insumo_requisicion" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_insumo_detalle.fk_salida_insumo_detalle_bodega" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_insumo_detalle.fk_salida_insumo_detalle_insumo" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_insumo_detalle.fk_salida_insumo_detalle_salida_insumo" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_lote.fk_salida_lote_ambiente_historial_lote" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_lote.fk_salida_lote_empleado" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.salida_lote.fk_salida_lote_razon_salida" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.usuario_credencial.fk_usuarios_credenciales_credenciales" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <FkGl bkCl="ff000000" childEdge="" nm="public.usuario_credencial.fk_usuarios_credenciales_usuarios" parentEdge="" positioner="">
+      <positionableLines/>
+    </FkGl>
+    <Notes/>
+    <Zones/>
+  </Dgm>
+  <RnmMgr NxRnmId="82">
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="5" nNm="usuario" oNm="usuarios"/>
+      <Rnm id="2" nNm="usuarios" oNm="user"/>
+      <Rnm id="1" nNm="user" oNm="nm_user"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="usuario_credencial" SupCls="Schema" SupNme="public">
+      <Rnm id="11" nNm="usuario_id" oNm="id_usuario"/>
+      <Rnm id="9" nNm="id_usuario" oNm="id_usuarios"/>
+      <Rnm id="3" nNm="id_usuarios" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="usuario_credencial" SupCls="Schema" SupNme="public">
+      <Rnm id="12" nNm="credencial_id" oNm="id_credencial"/>
+      <Rnm id="10" nNm="id_credencial" oNm="id_credenciales"/>
+      <Rnm id="4" nNm="id_credenciales" oNm="id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="7" nNm="usuario_credencial" oNm="usuario_credenciales"/>
+      <Rnm id="6" nNm="usuario_credenciales" oNm="usuarios_credenciales"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="8" nNm="credencial" oNm="credenciales"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="recordar_me" SupCls="Schema" SupNme="public">
+      <Rnm id="16" nNm="hash_cookie" oNm="llave"/>
+      <Rnm id="15" nNm="llave" oNm="hash"/>
+      <Rnm id="14" nNm="hash" oNm="key"/>
+      <Rnm id="13" nNm="key" oNm="hash"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="recordar_me" SupCls="Schema" SupNme="public">
+      <Rnm id="17" nNm="ip_address" oNm="direccion_ip"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="empleado" SupCls="Schema" SupNme="public">
+      <Rnm id="20" nNm="cargo_id" oNm="id_cargo"/>
+      <Rnm id="18" nNm="id_cargo" oNm="cargo_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="19" nNm="tipo_identificacion" oNm="tipo_documento"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="unidad_medida" SupCls="Schema" SupNme="public">
+      <Rnm id="21" nNm="observacion" oNm="descripcion"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="salida_insumo" SupCls="Schema" SupNme="public">
+      <Rnm id="22" nNm="empleado_id_salida" oNm="empleado_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_cucarron" SupCls="Schema" SupNme="public">
+      <Rnm id="24" nNm="empleado_id_administrador" oNm="empleado_id_responsable"/>
+      <Rnm id="23" nNm="empleado_id_responsable" oNm="empleado_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="25" nNm="id" oNm="bodegaId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="ambiente" SupCls="Schema" SupNme="public">
+      <Rnm id="26" nNm="id" oNm="ambienteId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="pediluvio" SupCls="Schema" SupNme="public">
+      <Rnm id="27" nNm="id" oNm="pediluvioId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="tipo_ambiente" SupCls="Schema" SupNme="public">
+      <Rnm id="28" nNm="id" oNm="tipo_ambienteId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="registro_desinfeccion" SupCls="Schema" SupNme="public">
+      <Rnm id="29" nNm="id" oNm="registro_desinfeccionId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="registro_desinfeccion" SupCls="Schema" SupNme="public">
+      <Rnm id="30" nNm="empleado_id_responsable" oNm="empleado_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="registro_desinfeccion_detalle" SupCls="Schema" SupNme="public">
+      <Rnm id="31" nNm="id" oNm="registro_desinfeccion_detalleId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="postura" SupCls="Schema" SupNme="public">
+      <Rnm id="32" nNm="id" oNm="posturaId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="ambiente_historial_lote" SupCls="Schema" SupNme="public">
+      <Rnm id="33" nNm="id" oNm="ambiente_historial_loteId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_alimento" SupCls="Schema" SupNme="public">
+      <Rnm id="34" nNm="id" oNm="control_alimentoId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="tipo_desinfeccion" SupCls="Schema" SupNme="public">
+      <Rnm id="35" nNm="id" oNm="tipo_desinfeccionId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="ambiente_insumo" SupCls="Schema" SupNme="public">
+      <Rnm id="36" nNm="id" oNm="ambiente_insumoId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="registro_alistamiento" SupCls="Schema" SupNme="public">
+      <Rnm id="37" nNm="id" oNm="registro_alistamientoId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="registro_alistamiento_detalle_ambiente" SupCls="Schema" SupNme="public">
+      <Rnm id="38" nNm="id" oNm="registro_alistamiento_ambienteId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="39" nNm="registro_alistamiento_detalle_ambiente" oNm="registro_alistamiento_ambiente"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="lote" SupCls="Schema" SupNme="public">
+      <Rnm id="40" nNm="fecha_entrada_granja" oNm="fecha_entrada"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="registro_alistamiento_detalle_desinfeccion" SupCls="Schema" SupNme="public">
+      <Rnm id="41" nNm="id" oNm="registro_alistamiento_detalle_desinfeccionId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="registro_alistamiento" SupCls="Schema" SupNme="public">
+      <Rnm id="51" nNm="salida_insumo_detalle_id_cortina" oNm="salida_insumo_id_cortina"/>
+      <Rnm id="50" nNm="salida_insumo_id_cortina" oNm="insumo_id_cortina"/>
+      <Rnm id="42" nNm="insumo_id_cortina" oNm="insumo_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="registro_alistamiento" SupCls="Schema" SupNme="public">
+      <Rnm id="52" nNm="salida_insumo_detalle_id_cama" oNm="salida_insumo_id_cama"/>
+      <Rnm id="43" nNm="salida_insumo_id_cama" oNm="salida_insumo_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="registro_alistamiento_equipo" SupCls="Schema" SupNme="public">
+      <Rnm id="44" nNm="id" oNm="rgistro_alistamiento_equipoId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="45" nNm="registro_alistamiento_equipo" oNm="rgistro_alistamiento_equipo"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="tipo_reparacion" SupCls="Schema" SupNme="public">
+      <Rnm id="46" nNm="id" oNm="tipo_reparacionId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="alistamiento_reparacion" SupCls="Schema" SupNme="public">
+      <Rnm id="47" nNm="id" oNm="alistamiento_reparacionId"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="48" nNm="cajon_compostaje" oNm="cojon_compostaje"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_compostaje" SupCls="Schema" SupNme="public">
+      <Rnm id="49" nNm="cajon_compostaje_id" oNm="cojon_compostaje_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="salida_incubadora" SupCls="Schema" SupNme="public">
+      <Rnm id="54" nNm="empleado_id" oNm="empleado_id_despachador"/>
+      <Rnm id="53" nNm="empleado_id_despachador" oNm="empleado_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="postura" SupCls="Schema" SupNme="public">
+      <Rnm id="55" nNm="no_caseta" oNm="no_ramada"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="salida_detalle_postura" SupCls="Schema" SupNme="public">
+      <Rnm id="56" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="66" nNm="tipo_mantenimiento" oNm="mantenimiento_preventivo"/>
+      <Rnm id="57" nNm="mantenimiento_preventivo" oNm="detalle_mantenimiento"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bitacora" SupCls="Schema" SupNme="public">
+      <Rnm id="58" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="registro_alistamiento" SupCls="Schema" SupNme="public">
+      <Rnm id="59" nNm="deleted_at" oNm="delete_at"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="60" nNm="bodega" oNm="insumo"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="entrada_bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="61" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="62" nNm="entrada_bodega" oNm="entrada"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="entrada_bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="63" nNm="fecha_entrada" oNm="fecha_registro"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="inventario_bodega" SupCls="Schema" SupNme="public">
+      <Rnm id="64" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="insumo" SupCls="Schema" SupNme="public">
+      <Rnm id="65" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="67" nNm="mantenimiento" oNm="mantenimiento_correctivo"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="68" nNm="detalle_mantenimiento" oNm="detalle_mantenimiento_correctivo"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="detalle_mantenimiento" SupCls="Schema" SupNme="public">
+      <Rnm id="69" nNm="mantenimiento_id" oNm="mantenimiento_correctivo_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="mantenimiento" SupCls="Schema" SupNme="public">
+      <Rnm id="70" nNm="fecha_inicio" oNm="fecha"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="bodega_clasificacion" SupCls="Schema" SupNme="public">
+      <Rnm id="71" nNm="id" oNm="Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="requisicion" SupCls="Schema" SupNme="public">
+      <Rnm id="72" nNm="empleado_id" oNm="empleado_id_recepcion"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="73" nNm="salida_detalle_incubadora" oNm="salida_detalle"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="requisicion_detalle" SupCls="Schema" SupNme="public">
+      <Rnm id="81" nNm="insumo_id" oNm="bodega_id"/>
+      <Rnm id="74" nNm="bodega_id" oNm="insumo_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="usuario" SupCls="Schema" SupNme="public">
+      <Rnm id="75" nNm="user_name" oNm="user"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="control_cucarron" SupCls="Schema" SupNme="public">
+      <Rnm id="76" nNm="empleado_id_veterinario" oNm="empleado_id_veterianario"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="salida_insumo_detalle" SupCls="Schema" SupNme="public">
+      <Rnm id="77" nNm="bodega_id" oNm="insumo_id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Table" ParCls="Schema" ParNme="public" SupCls="" SupNme="">
+      <Rnm id="78" nNm="clasificacion_maquina" oNm="clasificacion"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="maquina" SupCls="Schema" SupNme="public">
+      <Rnm id="79" nNm="clasificacion_maquina_id" oNm="clasificacion_maquina_Id"/>
+    </RnmCh>
+    <RnmCh ObjCls="Column" ParCls="Table" ParNme="clasificacion_maquina" SupCls="Schema" SupNme="public">
+      <Rnm id="80" nNm="id" oNm="Id"/>
+    </RnmCh>
+  </RnmMgr>
+  <DbDocOptionMgr>
+    <BasicOptionMgr>
+      <Name>db.doc.option.mgr</Name>
+      <BoolOpt lbl="Diagrams" nm="doc.diagrams" on="1" spl="0"/>
+      <BoolOpt lbl="Foreign Keys" nm="doc.fks" on="1" spl="0"/>
+      <BoolOpt lbl="Indexes" nm="doc.indexes" on="1" spl="0"/>
+      <BoolOpt lbl="Overwrite CSS File" nm="doc.overwrite.css" on="1" spl="0"/>
+      <BoolOpt lbl="Procedures" nm="doc.procs" on="1" spl="0"/>
+      <BoolOpt lbl="Schemas" nm="doc.schemas" on="1" spl="0"/>
+      <BoolOpt lbl="Sequences" nm="doc.sequences" on="1" spl="0"/>
+      <BoolOpt lbl="Tables" nm="doc.tables" on="1" spl="0"/>
+      <BoolOpt lbl="Triggers" nm="doc.triggers" on="1" spl="0"/>
+      <BoolOpt lbl="Views" nm="doc.views" on="1" spl="0"/>
+    </BasicOptionMgr>
+  </DbDocOptionMgr>
+  <OpenEditors>
+    <OpenEditor ClsNm="Diagram" fqn="null.diagramA" selected="1"/>
+  </OpenEditors>
+  <TreePaths>
+    <TreePath/>
+    <TreePath>/Schemas (1)</TreePath>
+    <TreePath>/Schemas (1)/public</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (56)</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (56)/postura_detalle</TreePath>
+    <TreePath>/Schemas (1)/public/Tables (56)/postura_detalle/Columns (7)</TreePath>
+    <TreePath>/Schemas (1)/public/Sequences (56)</TreePath>
+    <TreePath>/Diagrams (1)</TreePath>
+    <TreePath>/Diagrams (1)/diagramA</TreePath>
+  </TreePaths>
+</Db>

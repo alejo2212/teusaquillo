@@ -13,7 +13,7 @@ class insumoBaseTableClass extends tableBaseClass {
   const ACTIVO = 'activo';
   const DELETED_AT = 'deleted_at';
   const NOMBRE = 'nombre';
-  const NOMBRE_LENGTH = 1024;
+  const NOMBRE_LENGTH = 200;
   const TIPO_INSUMO_ID = 'tipo_insumo_id';
   const PRESENTACION_ID = 'presentacion_id';
   const UNIDAD_MEDIDA_ID = 'unidad_medida_id';
@@ -51,7 +51,7 @@ class insumoBaseTableClass extends tableBaseClass {
    * @return \PDOException|boolean
    */
   public static function delete($ids, $deletedLogical = false, $table = null) {
-    return parent::delete(self::getNameTable(), $ids, $deletedLogical);
+    return parent::delete($ids, $deletedLogical,self::getNameTable());
   }
 
   /**
@@ -83,8 +83,8 @@ class insumoBaseTableClass extends tableBaseClass {
    * variables publica los nombres de las columnas de la consulta o una
    * instancia de \PDOException en caso de fracaso.
    */
-  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $table = null) {
-    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset);
+  public static function getAll($fields, $deletedLogical = true, $orderBy = null, $order = null, $limit = null, $offset = null, $where= null, $table = null) {
+    return parent::getAll(self::getNameTable(), $fields, $deletedLogical, $orderBy, $order, $limit, $offset, $where);
   }
 
   /**

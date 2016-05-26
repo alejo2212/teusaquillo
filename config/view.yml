@@ -1,48 +1,344 @@
 all:
+  favicon: favicon.ico
+  title: Sistema Teusaquillo
   meta:
     - charset="UTF-8"
   javascript:
     - jquery-1.11.1.min.js
     - bootstrap.min.js
+    - alejo.js
+    - alert.js
   stylesheet:
     - bootstrap.min.css
     - bootstrap-theme.min.css
     - font-awesome.min.css
     - main.css
-
+ 
+shfSecurity:
+  index:
+    title: Identificacion de usuario
+    stylesheet:
+      - signin.css
+      
 security:
   index:
     javascript:
-      - securityIndex.js
+      - index.js
 
 sesion:
   index:
     javascript:
-      - securityIndex.js
+      - index.js
 
 credencial:
   index:
     javascript:
-      - securityIndex.js
-      
-      
+      - index.js
+
 tipoInsumo:
   index:
     javascript:
-      - securityIndex.js
+      - index.js
       
       
 presentacion:
   index:
     javascript:
-      - securityIndex.js
-      
+      - index.js
       
 unidadMedida:
   index:
     javascript:
-      - securityIndex.js
+      - index.js
+      
+cargo:
+  index:
+    javascript:
+      - index.js
 
+controlAlimento:
+  index:
+    javascript:
+      - index.js
+  new:
+    javascript:
+      - datosSalida.js
+  edit:
+    javascript:
+      - datosSalida.js
+      
+tipoid:
+  index:
+    javascript:
+      - index.js
+      
+localizacion:
+  index:
+    javascript:
+      - index.js
+      
+empleado:
+  index:
+    javascript:
+      - index.js
+
+tipoDesinfeccion:
+  index:
+    javascript:
+      - index.js
+      
+requisicion:
+  index:
+    javascript:
+      - index.js
+  detail:
+    javascript:
+      - index.js
+      
+detalleRequisicion:
+  index:
+    javascript:
+      - index.js
+      
+maquina:
+  index:
+    javascript:
+      - index.js
+  new:
+    javascript:
+      - index.js
+
+clasificacionMaquina:
+  index:
+    javascript:
+      - index.js
+      
+tipoMantenimiento:
+  index:
+    javascript:
+      - index.js
+      
+mantenimiento:
+  index:
+    javascript:
+      - index.js
+  detail:
+    javascript:
+      - index.js
+  new:
+    javascript:
+      - index.js
+      
+detalleMantenimiento:
+  index:
+    javascript:
+      - index.js
+
+tipoEmpaque:
+  index:
+    javascript:
+      - index.js
+ 
+devolucionIncubadora:
+  index:
+    javascript:
+      - index.js
+      
+incubadora:
+  index:
+    javascript:
+      - index.js
+
+registroAlistamiento:
+  index:
+    javascript:
+      - index.js
+      
+tipoAmbiente:
+  index:
+    javascript:
+      - index.js
+
+ambiente:
+  index:
+    javascript:
+      - index.js
+      
+ambienteInsumo:
+  index:
+    javascript:
+      - index.js
+  new:
+    javascript:
+      - datosSalidaGlobal.js
+  edit:
+    javascript:
+      - datosSalidaGlobal.js
+
+salidaInsumoDetalle:
+  index:
+    javascript:
+      - index.js
+      
+salidaInsumo:
+  index:
+    javascript:
+      - index.js
+  detail:
+    javascript:
+      - index.js
+  new:
+    javascript:
+      - datosRequisicion.js
+  edit:
+    javascript:
+      - datosRequisicion.js
+      
+lote:
+  index:
+    javascript:
+      - index.js
+      
+razonSalida:
+  index:
+    javascript:
+      - index.js
+      
+salidaLote:
+  index:
+    javascript:
+      - index.js
+      
+raza:
+  index:
+    javascript:
+      - index.js
+      
+insumo:
+  index:
+    javascript:
+      - index.js
+      
+transportador:
+  index:
+    javascript:
+      - index.js
+
+bodegaClasificacion:
+  index:
+    javascript:
+      - index.js
+      
+tipoReparacion:
+  index:
+    javascript:
+      - index.js
+
+bodega:
+  index:
+    javascript:
+      - index.js
+entradaBodega:
+  index:
+    javascript:
+      - index.js
+      
+ambienteHistorialLote:
+  index:
+    javascript:
+      - index.js
+      
+clasificacionPostura:
+  index:
+    javascript:
+      - index.js
+      
+postura:
+  index:
+    javascript:
+      - index.js
+      - alejo.js
+  detail:
+    javascript:
+      - index.js
+      
+posturaDetalle:
+  index:
+    javascript:
+      - index.js
+      
+salidaIncubadora:
+  index:
+    javascript:
+      - index.js
+  detail:
+    javascript:
+      - index.js
+      
+salidaDetalleIncubadora:
+  index:
+    javascript:
+      - index.js
+      
+tipoDesinfeccion:
+  index:
+    javascript:
+      - index.js
+      
+formaAplicacion:
+  index:
+    javascript:
+      - index.js
+      
+cajonCompostaje:
+  index:
+    javascript:
+      - index.js  
+      
+controlCompostaje:
+  index:
+    javascript:
+      - index.js 
+
+controlCucarron:
+  index:
+    javascript:
+      - index.js 
+  new:
+    javascript:
+      - datosSalidaGlobal.js 
+  edit:
+    javascript:
+      - datosSalidaGlobal.js 
+      
+controlRoedores:
+  index:
+    javascript:
+      - index.js
+  new:
+    javascript:
+      - datosSalidaGlobal.js
+  edit:
+    javascript:
+      - datosSalidaGlobal.js
+      
+registroDesinfeccion:
+  index:
+    javascript:
+      - index.js
+  new:
+    javascript:
+      - datosSalidaGlobal.js
+      - index.js
+  edit:
+    javascript:
+      - datosSalidaGlobal.js
+      - index.js
+
+alistamientoReparacion:
+  index:
+    javascript:
+      - index.js
 #default:
 #  index:
 #    meta:

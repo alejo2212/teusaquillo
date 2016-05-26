@@ -10,11 +10,11 @@ namespace mvc\session {
    * @author Julian Lasso <ingeniero.julianlasso@gmail.com>
    */
   class sessionClass implements sessionInterface {
-    
+
     private static $instance;
 
     /**
-     * 
+     *
      * @return sessionClass
      */
     public static function getInstance() {
@@ -31,7 +31,7 @@ namespace mvc\session {
     public function getAttribute($attribute) {
       return (isset($_SESSION[$attribute])) ? $_SESSION[$attribute] : false;
     }
-    
+
     public function getCredentials() {
       return ($this->hasAttribute('mvcCredentials')) ? $this->getAttribute('mvcCredentials') : false;
     }
@@ -50,7 +50,7 @@ namespace mvc\session {
 
     public function hasCredential($credential) {
       if ($this->hasAttribute('mvcCredentials')) {
-        return isset($this->getAttribute('mvcCredentials')[$credential]);
+        return (array_search($credential, $this->getAttribute('mvcCredentials'), 'true') === false) ? false : true;
       }
       return false;
     }
@@ -71,6 +71,10 @@ namespace mvc\session {
       $_SESSION[$attribute] = $value;
     }
 
+    /**
+     * Define si usuario está o no autenticado en el sistema
+     * @param boolean $authenticate
+     */
     public function setUserAuthenticate($authenticate) {
       $this->setAttribute('mvcUserAuthenticate', $authenticate);
     }
@@ -78,7 +82,11 @@ namespace mvc\session {
     public function setCredential($credential) {
       $_SESSION['mvcCredentials'][] = $credential;
     }
-    
+
+    /**
+     *
+     * @param array $credentials
+     */
     public function setCredentials($credentials) {
       $this->setAttribute('mvcCredentials', $credentials);
     }
@@ -90,7 +98,7 @@ namespace mvc\session {
     public function setModule($module) {
       $this->setFlash('mvcModule', $module);
     }
-    
+
     /**
      * Devuelve el formato a usar definido en el routing (html, json, xml, pdf, js)
      * @return string
@@ -98,21 +106,21 @@ namespace mvc\session {
     public function getFormatOutput() {
       return $this->getFlash('mvcFormatOutput');
     }
-    
+
     public function setFormatOutput($format_output) {
       return $this->setFlash('mvcFormatOutput', $format_output);
     }
-    
+
     public function getLoadFiles() {
       return $this->getFlash('mvcLoadFiles');
     }
-    
+
     public function setLoadFiles($load_files) {
       return $this->setFlash('mvcLoadFiles', $load_files);
     }
 
     /**
-     * 
+     *
      * @return array from Exception|PDOException
      */
     public function getError() {
@@ -122,7 +130,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @return array
      */
     public function getInformation() {
@@ -132,7 +140,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @return array
      */
     public function getSuccess() {
@@ -142,7 +150,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @return array
      */
     public function getWarning() {
@@ -152,7 +160,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @param Exception|PDOException $error
      */
     public function setError($error) {
@@ -160,7 +168,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @param string $information
      */
     public function setInformation($information) {
@@ -168,7 +176,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @param string $success
      */
     public function setSuccess($success) {
@@ -176,7 +184,7 @@ namespace mvc\session {
     }
 
     /**
-     * 
+     *
      * @param string $warning
      */
     public function setWarning($warning) {
@@ -190,7 +198,7 @@ namespace mvc\session {
     public function setFirstCall($first_call) {
       $this->setAttribute('mvcFirstCall', $first_call);
     }
-    
+
     public function hasFirstCall() {
       return $this->hasAttribute('mvcFirstCall');
     }
@@ -241,6 +249,30 @@ namespace mvc\session {
 
     public function deleteWarningStack() {
       unset($_SESSION['mvcWarning']);
+    }
+
+    public function getCache($cache) {
+      return $_SESSION['mvcCache'][$cache];
+    }
+
+    public function hasCache($cache) {
+      return (isset($_SESSION['mvcCache'][$cache])) ? true : false;
+    }
+
+    public function setCache($cache, $value) {
+      $_SESSION['mvcCache'][$cache] = $value;
+    }
+
+    public function deleteAttribute($attribute) {
+      unset($_SESSION[$attribute]);
+    }
+
+    public function deleteCredentials() {
+      unset($_SESSION['mvcCredentials']);
+    }
+
+    public function hasUserId() {
+      return $this->hasAttribute('mvcUserName');
     }
 
   }
